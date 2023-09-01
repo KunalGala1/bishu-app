@@ -1,6 +1,6 @@
-@use "../abstracts/" as a;
-@use "../layout" as l;
-@use "../theme/" as t;
+@use '../abstracts/' as a;
+@use '../layout' as l;
+@use '../theme/' as t;
 
 [data-animation] {
   transition-duration: 0.5s;
@@ -10,36 +10,31 @@
 /* Transition Options */
 
 // Delay
-[data-delay="sm"] {
+[data-delay='sm'] {
   transition-delay: 0.5s;
 }
-[data-delay="md"] {
+[data-delay='md'] {
   transition-delay: 0.75s;
 }
-[data-delay="lg"] {
+[data-delay='lg'] {
   transition-delay: 1s;
 }
 
 // Duration
-[data-duration="fast"] {
+[data-duration='fast'] {
   transition-duration: 0.25s;
 }
-[data-duration="slow"] {
+[data-duration='slow'] {
   transition-duration: 0.75s;
 }
 
 // Cubic Bezier
-[data-bezier="ease"] {
-  transition-timing-function: cubic-bezier(
-    0.18,
-    0.89,
-    0.32,
-    1.1
-  ); // ease-out backwards
+[data-bezier='ease'] {
+  transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.1); // ease-out backwards
 }
 
 /* Blur */
-[data-animation="blur"] {
+[data-animation='blur'] {
   filter: blur(5px);
   &.animate--start {
     filter: blur(0);
@@ -47,7 +42,7 @@
 }
 
 /* Fade */
-[data-animation="fade"] {
+[data-animation='fade'] {
   opacity: 0;
   &.animate--start {
     opacity: 1;
@@ -55,11 +50,11 @@
 }
 
 /* Slide */
-[data-animation="slide"] {
-  &[data-direction="left"] {
+[data-animation='slide'] {
+  &[data-direction='left'] {
     transform: translateX(-100%);
   }
-  &[data-direction="right"] {
+  &[data-direction='right'] {
     transform: translateX(100%);
   }
   &.animate--start {
@@ -70,7 +65,7 @@
 /* Keyframes ================================================ */
 
 // Shake
-[data-hover="shake"]:hover {
+[data-hover='shake']:hover {
   animation: shake 0.5s;
 }
 
@@ -93,7 +88,7 @@
 }
 
 // Rotate
-[data-hover="rotate"]:hover {
+[data-hover='rotate']:hover {
   animation: rotate 0.5s;
 }
 
@@ -102,13 +97,13 @@
     transform: rotate(0deg);
   }
   25% {
-    transform: rotate(10deg);
+    transform: rotate(5deg);
   }
   50% {
-    transform: rotate(-10deg);
+    transform: rotate(-5deg);
   }
   75% {
-    transform: rotate(10deg);
+    transform: rotate(5deg);
   }
   100% {
     transform: rotate(0deg);
@@ -116,7 +111,7 @@
 }
 
 // Pulse
-[data-hover="pulse"]:hover {
+[data-hover='pulse']:hover {
   animation: pulse 0.5s;
 }
 
@@ -133,14 +128,14 @@
 }
 
 // Underline
-[data-hover="underline"] {
+[data-hover='underline'] {
   position: relative;
   &::after {
-    content: "";
+    content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
-    height: 1px;
+    height: 2px;
     width: 0%;
     background-color: white;
     @include a.transition;

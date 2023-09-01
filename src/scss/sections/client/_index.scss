@@ -1,1 +1,5 @@
-@forward "login";
+@forward 'login';
+
+/* Home page */
+@forward 'hero';
+@forward 'page-previews';

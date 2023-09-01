@@ -53,6 +53,10 @@ $directions: (
 }
 
 // Layout
-.mw-xs {
-  @include l.max-width(xs);
+$sizes: xs, sm, md, lg, xl;
+
+@each $size in $sizes {
+  .mw-#{$size} {
+    @include l.max-width($size);
+  }
 }

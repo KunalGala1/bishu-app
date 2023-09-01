@@ -1,0 +1,28 @@
+@use '../../abstracts/' as a;
+@use '../../layout/' as l;
+@use '../../theme/' as t;
+
+#page-previews {
+  section {
+    @include l.padding(md);
+    min-height: 500px;
+
+    &:nth-child(1) {
+      background-color: #450d0d;
+    }
+    &:nth-child(2) {
+      background-color: #631313;
+    }
+    &:nth-child(3) {
+      background-color: #7e1717;
+    }
+    &:nth-child(4) {
+      background-color: #933f3f;
+    }
+
+    //btns
+    .btn-container {
+      width: 100%;
+    }
+  }
+}

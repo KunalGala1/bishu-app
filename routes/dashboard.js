@@ -1,56 +1,54 @@
 /* Import Required Modules */
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const passport = require("passport");
-const fs = require("fs");
-const path = require("path");
+const passport = require('passport');
+const fs = require('fs');
+const path = require('path');
 
 /* Import Models */
-const User = require("../models/User");
-const Content = require("../models/Content");
-const Event = require("../models/Event");
+const User = require('../models/User');
+const Content = require('../models/Content');
+const Event = require('../models/Event');
+const Video = require('../models/Video');
+const Blogpost = require('../models/Blogpost');
 
 /* Models Map */
 const map = {
   User,
   Content,
   Event,
+  Video,
+  Blogpost,
 };
 
 /* Fetch and Prepare Form Data */
-const fetchFormData = (key, method = "", doc) => {
+const fetchFormData = (key, method = '', doc) => {
   /* Parse specfic key json */
-  const formData = JSON.parse(
-    fs.readFileSync(path.join(__dirname, "../data/formData.json"), "utf8")
-  )[key];
+  const formData = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/formData.json'), 'utf8'))[key];
 
   /* Prepare formData based on method */
   switch (method.toLowerCase()) {
-    case "post":
-      formData.metadata.method = "POST";
+    case 'post':
+      formData.metadata.method = 'POST';
       break;
-    case "put":
+    case 'put':
       if (!doc) {
-        console.error("error: doc is not defined");
+        console.error('error: doc is not defined');
         break;
       }
-      formData.metadata.method = "PUT";
-      formData.metadata.action += "/" + doc._id;
+      formData.metadata.method = 'PUT';
+      formData.metadata.action += '/' + doc._id;
       /* Prepare formData based on model constructor */
-      formData.metadata.saveAndAddNew = ["Content"].includes(
-        doc.constructor.modelName
-      )
-        ? false
-        : true;
+      formData.metadata.saveAndAddNew = ['Content'].includes(doc.constructor.modelName) ? false : true;
 
       const body = JSON.parse(doc.body);
 
-      formData.fields.forEach((field) => {
+      formData.fields.forEach(field => {
         switch (field.type) {
-          case "hidden":
+          case 'hidden':
             // Do nothing
             break;
-          case "file":
+          case 'file':
             field.file = body.file;
             break;
           default:
@@ -63,40 +61,39 @@ const fetchFormData = (key, method = "", doc) => {
   }
 
   // Check on display name
-  formData.metadata.display =
-    formData.metadata.display ?? formData.metadata.name;
+  formData.metadata.display = formData.metadata.display ?? formData.metadata.name;
 
   return formData;
 };
 
 /* Import Auth Configs */
-const { forwardAuthenticated } = require("../config/auth");
-const { ensureAuthenticated } = require("../config/auth");
+const { forwardAuthenticated } = require('../config/auth');
+const { ensureAuthenticated } = require('../config/auth');
 
 /* Simple Get Routes */
-router.get("/", ensureAuthenticated, (req, res) => {
-  res.render("admin/dashboard");
+router.get('/', ensureAuthenticated, (req, res) => {
+  res.render('admin/dashboard');
 });
 
 /* Content Model Put Routes */
-const docs = [{ name: "about" }];
+const docs = [{ name: 'about' }];
 
-docs.forEach((doc) => {
+docs.forEach(doc => {
   /* GET Document */
-  router.get("/" + doc.name, ensureAuthenticated, async (req, res) => {
+  router.get('/' + doc.name, ensureAuthenticated, async (req, res) => {
     let options = {};
 
     const data = await Content.findOne({ name: doc.name });
-    const formData = fetchFormData(doc.name, "put", data);
+    const formData = fetchFormData(doc.name, 'put', data);
 
     options.doc = data;
     options.formData = formData;
 
-    res.render("admin/static_document", options);
+    res.render('admin/static_document', options);
   });
 
   /* PUT Document */
-  router.put("/" + doc.name + "/:id", ensureAuthenticated, async (req, res) => {
+  router.put('/' + doc.name + '/:id', ensureAuthenticated, async (req, res) => {
     try {
       const updatedDoc = await Content.findByIdAndUpdate(
         req.params.id,
@@ -114,7 +111,7 @@ docs.forEach((doc) => {
     } catch (error) {
       res.status(500).json({
         success: false,
-        error: "Something went wrong",
+        error: 'Something went wrong',
       });
     }
   });
@@ -125,21 +122,19 @@ docs.forEach((doc) => {
 // name: String (required) -- name of the route
 // model: String (optional) -- name of the model
 // content: Array (optional) -- additional content to be displayed on the page
-const lists = [{ name: "events" }];
+const lists = [{ name: 'events' }, { name: 'videos' }, { name: 'blogposts' }];
 
-const Model_Nomenclature = (string) => {
-  return (
-    string.slice(0, -1).charAt(0).toUpperCase() + string.slice(0, -1).slice(1)
-  );
+const Model_Nomenclature = string => {
+  return string.slice(0, -1).charAt(0).toUpperCase() + string.slice(0, -1).slice(1);
 };
 
-lists.forEach((list) => {
+lists.forEach(list => {
   /* Define Variables */
   const { name, model, content } = list;
   const Model = map[model || Model_Nomenclature(name)];
 
   /* Get Table of Complete Data Page*/
-  router.get("/" + name, ensureAuthenticated, async (req, res) => {
+  router.get('/' + name, ensureAuthenticated, async (req, res) => {
     // Initialize variables
     let docs = [],
       options = {};
@@ -158,21 +153,21 @@ lists.forEach((list) => {
 
     options.tableData = tableData;
 
-    res.render("admin/dynamic_list", options);
+    res.render('admin/dynamic_list', options);
   });
 
   /* Get Add New Document Page */
-  router.get("/" + name + "/new", ensureAuthenticated, (req, res) => {
+  router.get('/' + name + '/new', ensureAuthenticated, (req, res) => {
     // Initialize variables
     let options = {};
-    const formData = fetchFormData(name, "post");
+    const formData = fetchFormData(name, 'post');
     options.formData = formData;
 
-    res.render("admin/operations/new", options);
+    res.render('admin/operations/new', options);
   });
 
   /* Post New Document */
-  router.post("/" + name, ensureAuthenticated, async (req, res) => {
+  router.post('/' + name, ensureAuthenticated, async (req, res) => {
     try {
       const newDoc = await Model.create({
         body: JSON.stringify(req.body),
@@ -184,29 +179,25 @@ lists.forEach((list) => {
     } catch (error) {
       res.status(500).json({
         success: false,
-        error: "Something went wrong",
+        error: 'Something went wrong',
       });
     }
   });
 
   /* Get Edit Document Page */
-  router.get(
-    "/" + name + "/:id/edit",
-    ensureAuthenticated,
-    async (req, res) => {
-      // Initialize variables
-      let options = {};
+  router.get('/' + name + '/:id/edit', ensureAuthenticated, async (req, res) => {
+    // Initialize variables
+    let options = {};
 
-      const doc = await Model.findById(req.params.id);
-      const formData = fetchFormData(name, "put", doc);
-      options.doc = doc;
-      options.formData = formData;
-      res.render("admin/operations/edit", options);
-    }
-  );
+    const doc = await Model.findById(req.params.id);
+    const formData = fetchFormData(name, 'put', doc);
+    options.doc = doc;
+    options.formData = formData;
+    res.render('admin/operations/edit', options);
+  });
 
   /* Get Document */
-  router.get("/" + name + "/:id", ensureAuthenticated, async (req, res) => {
+  router.get('/' + name + '/:id', ensureAuthenticated, async (req, res) => {
     const doc = await Model.findById(req.params.id);
     res.json({
       success: true,
@@ -215,7 +206,7 @@ lists.forEach((list) => {
   });
 
   /* Put Document */
-  router.put("/" + name + "/:id", ensureAuthenticated, async (req, res) => {
+  router.put('/' + name + '/:id', ensureAuthenticated, async (req, res) => {
     try {
       const updatedDoc = await Model.findByIdAndUpdate(
         req.params.id,
@@ -233,13 +224,13 @@ lists.forEach((list) => {
     } catch (error) {
       res.status(500).json({
         success: false,
-        error: "Something went wrong",
+        error: 'Something went wrong',
       });
     }
   });
 
   /* Delete Document */
-  router.delete("/" + name + "/:id", ensureAuthenticated, async (req, res) => {
+  router.delete('/' + name + '/:id', ensureAuthenticated, async (req, res) => {
     try {
       const deletedDoc = await Model.findByIdAndDelete(req.params.id);
       res.json({
@@ -249,7 +240,7 @@ lists.forEach((list) => {
     } catch (error) {
       res.status(500).json({
         success: false,
-        error: "Something went wrong",
+        error: 'Something went wrong',
       });
     }
   });

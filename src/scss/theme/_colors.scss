@@ -30,9 +30,18 @@
   --8: rgb(8, 8, 8);
 
   /* MAIN */
-  --main: rgb(45, 71, 125);
-  --main-hover: rgb(85, 120, 195);
+  --main: #1a070c;
+  --main-hover: #1a070c;
 
   /* SECOND */
-  --second: rgb(16, 100, 32);
+  --second: #31020f;
+  --second-hover: #31020f;
+
+  /* ACCENT */
+  --accent: #ddb07d;
+  --accent2: #c37832;
+}
+
+.bg-secondary {
+  background-color: var(--second);
 }

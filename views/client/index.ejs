@@ -1,18 +1,66 @@
+<% 
+const aboutParsedBody = JSON.parse(data.about.body);
+const videoParsedBody = JSON.parse(data.Video[0].body);
+const blogpostParsedBody = JSON.parse(data.Blogpost[0].body);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
-  <%- include('../partials/head') %>
-</head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home</title>
+		<%- include('../partials/head') %>
+	</head>
 
-<body>
-  <%- include('../partials/nav') %>
-  <%- include('../sections/hero') %>
-  <%- include('../partials/footer') %>
-</body>
+	<body class="bg-secondary">
+		<%- include('../partials/nav') %>
+		<%- include('../sections/hero') %>
+		<div id="page-previews">
+			<section>
+				<div class="flex column align-start mw-md">
+					<a class="page-preview-link" href="/about">
+						<h1 class="header primary-header">About</h1>
+					</a>
+					<div class="txt color white sans" data-lh="2"><%- aboutParsedBody.intro %></div>
+					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/about">More</a></div>
+				</div>
+			</section>
+			<section>
+				<div class="flex column align-end mw-md">
+					<a class="page-preview-link" href="/music">
+						<h1 class="header primary-header">Music</h1>
+					</a>
+					<div class="txt color white sans" data-lh="2"></div>
+					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/music">More</a></div>
+
+				</div>
+			</section>
+			<section>
+				<div class="flex column mw-md align-stretch">
+					<div class="txt color white sans" data-lh="2">
+						<h2 class="txt center mg-b-md"><%- videoParsedBody.title %></h2>
+						<div><%- videoParsedBody.video %></div>
+					</div>
+					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/videos">More</a></div>
+
+				</div>
+			</section>
+			<section>
+				<div class="flex column align-end mw-md">
+					<a class="page-preview-link" href="/blog">
+						<h1 class="header primary-header">Blog</h1>
+					</a>
+					<div class="txt color white sans" data-lh="2"></div>
+					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/blog">More</a></div>
+
+				</div>
+			</section>
+
+		</div>
+		<%- include('../partials/footer') %>
+	</body>
 
 </html>

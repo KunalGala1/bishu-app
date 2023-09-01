@@ -3,8 +3,9 @@ const nav = {
   menu: 'nav-menu', link_classes: 'nav-link', map: [
   {name: 'home'},
   {name: 'about'},
-  {name: 'events'},
-  {name: 'contact'},
+  {name: 'music'},
+  {name: 'videos'},
+  {name: 'blog'},
   {name: 'profile', menu: 'drop-down-menu', link_classes: 'drop-down-link', map: [
     {name: 'profile', href: '#'},
     {name: 'settings', href: '#'},
@@ -26,26 +27,35 @@ const generateMenu = data => {
 }
 %>
 
-<nav>
-  <div class="logo">
-    <a href="/">
-      <img src="/img/logo.svg" alt="logo" />
-    </a>
-  </div>
+<nav class="flex gap-md">
 
-  <%- generateMenu(nav) %>
+	<div class="socials flex gap-md">
+		<a href="https://www.facebook.com/" class="socials-link"><i class="fab fa-facebook-f"></i></a>
+		<a href="https://www.instagram.com/" class="socials-link"><i class="fab fa-instagram"></i></a>
+		<a href="https://www.youtube.com/" class="socials-link"><i class="fab fa-youtube"></i></a>
+		<a href="https://www.spotify.com/" class="socials-link"><i class="fab fa-spotify"></i></a>
+	</div>
 
-  <div class="burger">
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+	<div class="logo" data-hover="rotate">
+		<a href="/">
+			<img src="/img/logo.jpg" alt="logo" />
+		</a>
+	</div>
+
+	<%- generateMenu(nav) %>
+
+	<div class="burger">
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
 </nav>
 
 <script>
-  const currentPath = window.location.pathname.replace(/\/$/, '');
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === currentPath || (link.getAttribute('href') === '/' && currentPath === ''));
-    link.setAttribute('data-hover', 'underline'); // optional
-  });
+	const currentPath = window.location.pathname.replace( /\/$/, '' );
+	document.querySelectorAll( '.nav-link' )
+		.forEach( link => {
+			link.classList.toggle( 'active', link.getAttribute( 'href' ) === currentPath || ( link.getAttribute( 'href' ) === '/' && currentPath === '' ) );
+			link.setAttribute( 'data-hover', 'underline' ); // optional
+		} );
 </script>

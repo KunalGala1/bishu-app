@@ -1,10 +1,16 @@
-@use "../abstracts/" as a;
-@use "../layout" as l;
-@use "../theme/" as t;
+@use '../abstracts/' as a;
+@use '../layout' as l;
+@use '../theme/' as t;
 
 nav {
   @include a.boxshadow;
   @include l.padding(md);
+  @include t.serif;
+  color: white;
+  a,
+  span {
+    text-transform: lowercase;
+  }
   position: sticky;
   top: 0;
 
@@ -15,10 +21,15 @@ nav {
   align-items: center;
 
   text-transform: capitalize;
+
+  z-index: 5;
 }
 
 .logo {
   width: 50px;
+  img {
+    @include l.radius(sm);
+  }
 }
 
 .burger {

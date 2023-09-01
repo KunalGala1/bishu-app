@@ -2,6 +2,8 @@
 const asideLinks = [
   {name: "events", fa: "calendar-days"}, 
   {name: "about", fa: "book"},
+  {name: "videos", fa: "video"},
+  {name: 'blogposts', fa: 'newspaper'},
 ];
 
 const generateAside = (links) => {
@@ -24,59 +26,61 @@ const generateAside = (links) => {
 %>
 
 <aside>
-  <div class="top">
-    <ul>
-      <li>
-        <a href="/" class="link aside-link">
-          <i class="fa-solid fa-house"></i>
-          <span>home</span>
-        </a>
-      </li>
-      <li>
-        <a href="/dashboard" class="link aside-link">
-          <i class="fa-solid fa-gauge"></i>
-          <span>dashboard</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="middle">
-    <%- generateAside(asideLinks) %>
-  </div>
-  <div class="bottom">
-    <ul>
-      <li>
-        <a href="/logout" class="link aside-link">
-          <i class="fa-solid fa-right-from-bracket"></i>
-          <span>log out</span>
-        </a>
-      </li>
-    </ul>
-  </div>
+	<div class="top">
+		<ul>
+			<li>
+				<a href="/" class="link aside-link">
+					<i class="fa-solid fa-house"></i>
+					<span>home</span>
+				</a>
+			</li>
+			<li>
+				<a href="/dashboard" class="link aside-link">
+					<i class="fa-solid fa-gauge"></i>
+					<span>dashboard</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="middle">
+		<%- generateAside(asideLinks) %>
+	</div>
+	<div class="bottom">
+		<ul>
+			<li>
+				<a href="/logout" class="link aside-link">
+					<i class="fa-solid fa-right-from-bracket"></i>
+					<span>log out</span>
+				</a>
+			</li>
+		</ul>
+	</div>
 </aside>
 
 <script>
-  document.addEventListener('DOMContentLoaded', (event) => {
-    const path = window.location.pathname;
-    const pathParts = path.split('/').filter(part => part !== '');
-    const links = document.querySelectorAll('.aside-link');
+	document.addEventListener( 'DOMContentLoaded', ( event ) => {
+		const path = window.location.pathname;
+		const pathParts = path.split( '/' )
+			.filter( part => part !== '' );
+		const links = document.querySelectorAll( '.aside-link' );
 
-    let found = false;
+		let found = false;
 
-    for (let i = pathParts.length - 1; i >= 0; i--) {
-      let searchPath = '/' + pathParts.slice(0, i + 1).join('/');
+		for ( let i = pathParts.length - 1; i >= 0; i-- ) {
+			let searchPath = '/' + pathParts.slice( 0, i + 1 )
+				.join( '/' );
 
-      for (let link of links) {
-        if (link.getAttribute('href') === searchPath) {
-          link.classList.add('active');
-          found = true;
-          break;
-        }
-      }
+			for ( let link of links ) {
+				if ( link.getAttribute( 'href' ) === searchPath ) {
+					link.classList.add( 'active' );
+					found = true;
+					break;
+				}
+			}
 
-      if (found) {
-        break;
-      }
-    }
-  });
+			if ( found ) {
+				break;
+			}
+		}
+	} );
 </script>

@@ -24,6 +24,7 @@ html:focus-within {
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
+  overflow-x: hidden;
 }
 
 /* A elements that don't have a class get default styles */
@@ -41,6 +42,11 @@ img,
 picture {
   max-width: 100%;
   display: block;
+}
+
+iframe {
+  width: 100%;
+  aspect-ratio: 16/9;
 }
 
 /* Inherit fonts for inputs and buttons */

@@ -12,22 +12,54 @@
       },
       "map": {
         "thead": ["title", "date", "time", "location"],
-        "tbody": [
-          "title",
-          { "type": "date", "key": "date" },
-          { "type": "time", "key": "time" },
-          "location"
-        ]
+        "tbody": ["title", { "type": "date", "key": "date" }, { "type": "time", "key": "time" }, "location"]
+      }
+    },
+    "fields": [{ "name": "title", "required": true }, { "type": "hidden", "name": "slug" }, { "type": "file", "label": "image", "required": true }, { "name": "date", "type": "date" }, { "name": "time", "type": "time" }, { "name": "location" }, { "tag": "textarea", "name": "description" }]
+  },
+  "videos": {
+    "metadata": {
+      "action": "/dashboard/videos",
+      "enctype": "multipart/form-data",
+      "name": "videos",
+      "display": "Video",
+      "sitemap": {
+        "loc": "http://localhost:5000/",
+        "changefreq": "daily",
+        "priority": 0.5
+      },
+      "map": {
+        "thead": ["title"],
+        "tbody": ["title"]
+      }
+    },
+    "fields": [
+      { "tag": "textarea", "name": "title" },
+      { "tag": "textarea", "name": "video", "label": "Paste embeded video code here" }
+    ]
+  },
+  "blogposts": {
+    "metadata": {
+      "action": "/dashboard/blog",
+      "enctype": "multipart/form-data",
+      "name": "blog",
+      "display": "Blog post",
+      "sitemap": {
+        "loc": "http://localhost:5000/",
+        "changefreq": "daily",
+        "priority": 0.5
+      },
+      "map": {
+        "thead": ["title", "date"],
+        "tbody": ["title", { "type": "date", "key": "date" }]
       }
     },
     "fields": [
       { "name": "title", "required": true },
       { "type": "hidden", "name": "slug" },
       { "type": "file", "label": "image", "required": true },
-      { "name": "date", "type": "date" },
-      { "name": "time", "type": "time" },
-      { "name": "location" },
-      { "tag": "textarea", "name": "description" }
+      { "tag": "textarea", "name": "description" },
+      { "tag": "textarea", "name": "content" }
     ]
   },
   "about": {
@@ -36,6 +68,9 @@
       "name": "about",
       "display": "About"
     },
-    "fields": [{ "tag": "textarea", "name": "about" }]
+    "fields": [
+      { "tag": "textarea", "name": "intro" },
+      { "tag": "textarea", "name": "about" }
+    ]
   }
 }

@@ -1,8 +1,24 @@
-@use "../abstracts/" as a;
-@use "../layout" as l;
-@use "../theme/" as t;
+@use '../abstracts/' as a;
+@use '../layout' as l;
+@use '../theme/' as t;
 
 /* Headers */
+
+.header {
+  &.primary-header {
+    @include t.serif;
+    font-size: 36px;
+  }
+}
+
+.hero-header {
+  @include t.serif;
+  font-size: 8vw;
+  text-align: center;
+  white-space: nowrap;
+  color: var(--accent);
+  text-transform: uppercase;
+}
 
 .dashboard-header {
   @include t.util;
@@ -25,13 +41,23 @@
 
 /* Links */
 
-.nav-link {
+%link-shared {
   color: var(--200);
   @include a.transition;
   &:hover,
   &.active {
     color: white;
   }
+}
+
+.socials-link {
+  @extend %link-shared;
+  font-size: 20px;
+}
+
+.nav-link {
+  @extend %link-shared;
+  // TODO - bigger?
 }
 
 .drop-down-link {
@@ -87,6 +113,10 @@
   }
 }
 
+.page-preview-link {
+  @extend %link-shared;
+}
+
 /* Blockquotes */
 
 blockquote {
@@ -108,5 +138,22 @@ span.wrap {
 
   &.sans {
     @include t.sans;
+  }
+
+  &.color {
+    &.white {
+      color: white;
+    }
+  }
+
+  @for $i from 10 through 30 {
+    $lh-value: calc($i / 10);
+    &[data-lh='#{$lh-value}'] {
+      line-height: $lh-value;
+    }
+  }
+
+  p + p {
+    margin-top: 30px;
   }
 }

@@ -1,6 +1,6 @@
-@use "../abstracts/" as a;
-@use "../layout" as l;
-@use "../theme/" as t;
+@use '../abstracts/' as a;
+@use '../layout' as l;
+@use '../theme/' as t;
 
 .form {
   @include l.radius(xs);
@@ -41,8 +41,8 @@
     }
   }
 
-  input[type="date"],
-  input[type="time"] {
+  input[type='date'],
+  input[type='time'] {
     width: max-content;
   }
 
@@ -81,7 +81,7 @@
     background-color: rgba(200, 200, 200, 0.1);
   }
 
-  input[type="file"] {
+  input[type='file'] {
     display: none;
   }
 
@@ -98,7 +98,7 @@
     }
   }
 
-  input[type="hidden"] + .item {
+  input[type='hidden'] + .item {
     margin-top: 30px;
   }
 

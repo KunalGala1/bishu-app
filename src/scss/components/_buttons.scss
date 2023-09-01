@@ -1,10 +1,13 @@
-@use "../abstracts/" as a;
-@use "../layout" as l;
-@use "../theme/" as t;
+@use '../abstracts/' as a;
+@use '../layout' as l;
+@use '../theme/' as t;
 
 .btn {
   @include a.boxshadow(sm);
   @include l.padding(xs, sm);
+  &.lg {
+    @include l.padding(sm, md);
+  }
   @include l.radius(xs);
   @include t.sans;
 
@@ -21,10 +24,11 @@
 }
 
 .btn-secondary {
-  background-color: var(--secondary);
+  background-color: var(--second);
   @include a.transition;
+  color: white;
   &:hover {
-    background-color: var(--secondary-hover);
+    background-color: var(--second-hover);
   }
 }
 
@@ -57,5 +61,15 @@
   color: white;
   &:hover {
     background-color: var(--dashboard-hover);
+  }
+}
+
+.btn-accent {
+  background-color: var(--220);
+  @include a.transition;
+  color: var(--second);
+  &:hover {
+    background-color: var(--accent2);
+    color: white;
   }
 }
