@@ -24,7 +24,7 @@ const blogpostParsedBody = JSON.parse(data.Blogpost[0].body);
 					<a class="page-preview-link" href="/about">
 						<h1 class="header primary-header">About</h1>
 					</a>
-					<div class="txt color white sans" data-lh="2"><%- aboutParsedBody.intro %></div>
+					<div class="txt color white sans flex column gap-sm" data-lh="2"><%- aboutParsedBody.intro %></div>
 					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/about">More</a></div>
 				</div>
 			</section>
@@ -53,7 +53,13 @@ const blogpostParsedBody = JSON.parse(data.Blogpost[0].body);
 					<a class="page-preview-link" href="/blog">
 						<h1 class="header primary-header">Blog</h1>
 					</a>
-					<div class="txt color white sans" data-lh="2"></div>
+					<a href="/blog/<%= blogpostParsedBody.slug %>">
+						<div class="txt color white sans" data-lh="2" style="width: 100%;">
+							<h2 class="txt center mg-b-md"><%- blogpostParsedBody.title %></h2>
+							<img src="<%= blogpostParsedBody.file.location %>" alt="<%= blogpostParsedBody.file.alt %>">
+							<div class="pd-t-md mw-xs"><%- blogpostParsedBody.description %></div>
+						</div>
+					</a>
 					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/blog">More</a></div>
 
 				</div>

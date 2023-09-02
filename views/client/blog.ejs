@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Blog</title>
+		<%- include('../partials/head') %>
+	</head>
+
+	<body class="bg-secondary">
+		<%- include('../partials/nav') %>
+		<section class="mw-xxl pd-md flex gap-md wrap txt color white sans align-stretch">
+			<% data.Blogpost.forEach(post => { %>
+			<% const postParsedBody = JSON.parse(post.body) %>
+			<div class="card rd-md bg-60-60" style="max-width: 300px;">
+				<a style="height: 100%; display: block;" href="/blog/<%= postParsedBody.slug %>">
+					<img style="border-radius: 15px 15px 0 0;" src="<%= postParsedBody.file.location %>" alt="<%= postParsedBody.file.alt %>">
+					<div class="pd-sm flex column gap-sm align-stretch">
+						<div><%- postParsedBody.title %></div>
+						<div><%- postParsedBody.description %></div>
+					</div>
+				</a>
+			</div>
+			<% }) %>
+		</section>
+		<%- include('../partials/footer') %>
+	</body>
+
+</html>

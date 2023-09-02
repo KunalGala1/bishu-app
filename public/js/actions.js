@@ -13,7 +13,29 @@ export const responseAction = (name, method, data) => {
         document.querySelector(`[data-id="${data.deletedDoc._id}"]`).remove();
       },
       save_and_add_new: () => {
-        window.location.replace("/dashboard/events/new");
+        window.location.replace('/dashboard/events/new');
+      },
+    },
+    videos: {
+      post: () => {
+        window.location.replace(`/dashboard/videos/${data.newDoc._id}/edit`);
+      },
+      delete: () => {
+        document.querySelector(`[data-id="${data.deletedDoc._id}"]`).remove();
+      },
+      save_and_add_new: () => {
+        window.location.replace('/dashboard/videos/new');
+      },
+    },
+    blogposts: {
+      post: () => {
+        window.location.replace(`/dashboard/blogposts/${data.newDoc._id}/edit`);
+      },
+      delete: () => {
+        document.querySelector(`[data-id="${data.deletedDoc._id}"]`).remove();
+      },
+      save_and_add_new: () => {
+        window.location.replace('/dashboard/blogposts/new');
       },
     },
   };
@@ -24,14 +46,13 @@ export const responseAction = (name, method, data) => {
     // Default action or error handling
   }
 
-  if (method === "delete") recountDocuments();
+  if (method === 'delete') recountDocuments();
 };
 
 const recountDocuments = () => {
-  const dashboardSubheader = document.querySelector(".dashboard-subheader");
+  const dashboardSubheader = document.querySelector('.dashboard-subheader');
   if (!dashboardSubheader) return;
 
-  const length = document.querySelectorAll("tbody tr").length;
-  dashboardSubheader.innerText =
-    length + " document" + `${length === 1 ? "" : "s"}`;
+  const length = document.querySelectorAll('tbody tr').length;
+  dashboardSubheader.innerText = length + ' document' + `${length === 1 ? '' : 's'}`;
 };

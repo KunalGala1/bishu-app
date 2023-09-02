@@ -42,6 +42,57 @@
   --accent2: #c37832;
 }
 
+.bg-main {
+  background-color: var(--main);
+}
+
 .bg-secondary {
   background-color: var(--second);
+}
+
+// Define the colors
+$colors: (
+  247: rgb(247, 247, 247),
+  235: rgb(235, 235, 235),
+  220: rgb(220, 220, 220),
+  200: rgb(200, 200, 200),
+  180: rgb(180, 180, 180),
+  160: rgb(160, 160, 160),
+  140: rgb(140, 140, 140),
+  120: rgb(120, 120, 120),
+  100: rgb(100, 100, 100),
+  80: rgb(80, 80, 80),
+  60: rgb(60, 60, 60),
+  40: rgb(40, 40, 40),
+  20: rgb(20, 20, 20),
+  8: rgb(8, 8, 8),
+);
+
+// Define opacity levels
+$opacities: (
+  10: 0.1,
+  20: 0.2,
+  30: 0.3,
+  40: 0.4,
+  50: 0.5,
+  60: 0.6,
+  70: 0.7,
+  80: 0.8,
+  90: 0.9,
+);
+
+// Generate classes for each color without any opacity modification
+@each $key, $color in $colors {
+  .bg-#{$key} {
+    background-color: $color;
+  }
+}
+
+// Generate classes for each of the colors with opacity levels
+@each $key, $color in $colors {
+  @each $opKey, $opacity in $opacities {
+    .bg-#{$key}-#{$opKey} {
+      background-color: rgba(red($color), green($color), blue($color), $opacity);
+    }
+  }
 }

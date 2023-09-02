@@ -140,6 +140,14 @@ span.wrap {
     @include t.sans;
   }
 
+  &.serif {
+    @include t.serif;
+  }
+
+  &.italics {
+    font-style: italic;
+  }
+
   &.color {
     &.white {
       color: white;
@@ -151,9 +159,5 @@ span.wrap {
     &[data-lh='#{$lh-value}'] {
       line-height: $lh-value;
     }
-  }
-
-  p + p {
-    margin-top: 30px;
   }
 }

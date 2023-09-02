@@ -1,0 +1,28 @@
+<%
+const postParsedBody = JSON.parse(data.body);
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Blog | <%= postParsedBody.title %></title>
+		<%- include('../partials/head') %>
+	</head>
+
+	<body class="bg-secondary">
+		<%- include('../partials/nav') %>
+		<img class="banner" src="<%= postParsedBody.file.location %>" alt="<%= postParsedBody.file.alt %>">
+		<div class="mw-sm pd-md txt color white serif pd-b-md">
+			<h1 class="txt header primary-header pd-t-lg"><%- postParsedBody.title %></h1>
+			<p class="txt italics pd-b-lg"><%- postParsedBody.subtitle %></p>
+			<div class="flex column align-stretch gap-md txt sans"><%- postParsedBody.content %></div>
+			<div class="flex mg-t-lg"><a class="btn btn-primary" href="/blog">Back</a></div>
+		</div>
+		<%- include('../partials/footer') %>
+	</body>
+
+</html>

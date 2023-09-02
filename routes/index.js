@@ -26,10 +26,10 @@ const pages = [
       lists: ['Video', 'Blogpost'],
     },
   },
-  { path: 'about' },
+  { path: 'about', data: { docs: ['about'] } },
   { path: 'music' },
-  { path: 'videos' },
-  { path: 'blog' },
+  { path: 'videos', data: { lists: ['Video'] } },
+  { path: 'blog', data: { lists: ['Blogpost'] } },
 ];
 
 pages.forEach(page => {
@@ -59,6 +59,27 @@ pages.forEach(page => {
 
     res.render(`client/${page.name || page.path}`, { data });
   });
+});
+
+router.get('/blog/:slug', async (req, res) => {
+  try {
+    // Retrieve all posts
+    const posts = await Blogpost.find();
+
+    // Find the post with the matching slug
+    const post = posts.find(p => JSON.parse(p.body).slug === req.params.slug);
+
+    if (!post) {
+      // If no post was found, redirect to /blog
+      return res.redirect('/blog');
+    }
+
+    // Render the blog post and pass the post data
+    res.render('client/blogpost', { data: post });
+  } catch (error) {
+    console.error('Error retrieving blog post:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 module.exports = router;

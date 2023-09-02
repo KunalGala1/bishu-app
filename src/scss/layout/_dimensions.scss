@@ -39,6 +39,13 @@ $radius: (
   }
 }
 
+// Generate classes for each of the sizes in the $radius map.
+@each $key, $value in $radius {
+  .rd-#{$key} {
+    @include radius($key);
+  }
+}
+
 $padding: (
   xxs: 5px,
   xs: 10px,

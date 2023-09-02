@@ -40,9 +40,9 @@
   },
   "blogposts": {
     "metadata": {
-      "action": "/dashboard/blog",
+      "action": "/dashboard/blogposts",
       "enctype": "multipart/form-data",
-      "name": "blog",
+      "name": "blogposts",
       "display": "Blog post",
       "sitemap": {
         "loc": "http://localhost:5000/",
@@ -54,13 +54,7 @@
         "tbody": ["title", { "type": "date", "key": "date" }]
       }
     },
-    "fields": [
-      { "name": "title", "required": true },
-      { "type": "hidden", "name": "slug" },
-      { "type": "file", "label": "image", "required": true },
-      { "tag": "textarea", "name": "description" },
-      { "tag": "textarea", "name": "content" }
-    ]
+    "fields": [{ "name": "title", "required": true }, { "type": "hidden", "name": "slug" }, { "name": "subtitle" }, { "type": "file", "label": "image", "required": true }, { "tag": "textarea", "name": "description" }, { "tag": "textarea", "name": "content" }]
   },
   "about": {
     "metadata": {
@@ -70,6 +64,7 @@
     },
     "fields": [
       { "tag": "textarea", "name": "intro" },
+      { "type": "file", "label": "image", "required": "true" },
       { "tag": "textarea", "name": "about" }
     ]
   }

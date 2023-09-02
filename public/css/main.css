@@ -2,6 +2,34 @@
 /* Box Shadow */
 /* Gradient */
 /* Text Shadow */
+.rd-xxs {
+  border-radius: 2.5px;
+}
+
+.rd-xs {
+  border-radius: 5px;
+}
+
+.rd-sm {
+  border-radius: 10px;
+}
+
+.rd-md {
+  border-radius: 15px;
+}
+
+.rd-lg {
+  border-radius: 30px;
+}
+
+.rd-xl {
+  border-radius: 50px;
+}
+
+.rd-xxl {
+  border-radius: 70px;
+}
+
 :root {
   /* UTILITY */
   --success: #3b916d;
@@ -39,8 +67,572 @@
   --accent2: #c37832;
 }
 
+.bg-main {
+  background-color: var(--main);
+}
+
 .bg-secondary {
   background-color: var(--second);
+}
+
+.bg-247 {
+  background-color: rgb(247, 247, 247);
+}
+
+.bg-235 {
+  background-color: rgb(235, 235, 235);
+}
+
+.bg-220 {
+  background-color: rgb(220, 220, 220);
+}
+
+.bg-200 {
+  background-color: rgb(200, 200, 200);
+}
+
+.bg-180 {
+  background-color: rgb(180, 180, 180);
+}
+
+.bg-160 {
+  background-color: rgb(160, 160, 160);
+}
+
+.bg-140 {
+  background-color: rgb(140, 140, 140);
+}
+
+.bg-120 {
+  background-color: rgb(120, 120, 120);
+}
+
+.bg-100 {
+  background-color: rgb(100, 100, 100);
+}
+
+.bg-80 {
+  background-color: rgb(80, 80, 80);
+}
+
+.bg-60 {
+  background-color: rgb(60, 60, 60);
+}
+
+.bg-40 {
+  background-color: rgb(40, 40, 40);
+}
+
+.bg-20 {
+  background-color: rgb(20, 20, 20);
+}
+
+.bg-8 {
+  background-color: rgb(8, 8, 8);
+}
+
+.bg-247-10 {
+  background-color: rgba(247, 247, 247, 0.1);
+}
+
+.bg-247-20 {
+  background-color: rgba(247, 247, 247, 0.2);
+}
+
+.bg-247-30 {
+  background-color: rgba(247, 247, 247, 0.3);
+}
+
+.bg-247-40 {
+  background-color: rgba(247, 247, 247, 0.4);
+}
+
+.bg-247-50 {
+  background-color: rgba(247, 247, 247, 0.5);
+}
+
+.bg-247-60 {
+  background-color: rgba(247, 247, 247, 0.6);
+}
+
+.bg-247-70 {
+  background-color: rgba(247, 247, 247, 0.7);
+}
+
+.bg-247-80 {
+  background-color: rgba(247, 247, 247, 0.8);
+}
+
+.bg-247-90 {
+  background-color: rgba(247, 247, 247, 0.9);
+}
+
+.bg-235-10 {
+  background-color: rgba(235, 235, 235, 0.1);
+}
+
+.bg-235-20 {
+  background-color: rgba(235, 235, 235, 0.2);
+}
+
+.bg-235-30 {
+  background-color: rgba(235, 235, 235, 0.3);
+}
+
+.bg-235-40 {
+  background-color: rgba(235, 235, 235, 0.4);
+}
+
+.bg-235-50 {
+  background-color: rgba(235, 235, 235, 0.5);
+}
+
+.bg-235-60 {
+  background-color: rgba(235, 235, 235, 0.6);
+}
+
+.bg-235-70 {
+  background-color: rgba(235, 235, 235, 0.7);
+}
+
+.bg-235-80 {
+  background-color: rgba(235, 235, 235, 0.8);
+}
+
+.bg-235-90 {
+  background-color: rgba(235, 235, 235, 0.9);
+}
+
+.bg-220-10 {
+  background-color: rgba(220, 220, 220, 0.1);
+}
+
+.bg-220-20 {
+  background-color: rgba(220, 220, 220, 0.2);
+}
+
+.bg-220-30 {
+  background-color: rgba(220, 220, 220, 0.3);
+}
+
+.bg-220-40 {
+  background-color: rgba(220, 220, 220, 0.4);
+}
+
+.bg-220-50 {
+  background-color: rgba(220, 220, 220, 0.5);
+}
+
+.bg-220-60 {
+  background-color: rgba(220, 220, 220, 0.6);
+}
+
+.bg-220-70 {
+  background-color: rgba(220, 220, 220, 0.7);
+}
+
+.bg-220-80 {
+  background-color: rgba(220, 220, 220, 0.8);
+}
+
+.bg-220-90 {
+  background-color: rgba(220, 220, 220, 0.9);
+}
+
+.bg-200-10 {
+  background-color: rgba(200, 200, 200, 0.1);
+}
+
+.bg-200-20 {
+  background-color: rgba(200, 200, 200, 0.2);
+}
+
+.bg-200-30 {
+  background-color: rgba(200, 200, 200, 0.3);
+}
+
+.bg-200-40 {
+  background-color: rgba(200, 200, 200, 0.4);
+}
+
+.bg-200-50 {
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+.bg-200-60 {
+  background-color: rgba(200, 200, 200, 0.6);
+}
+
+.bg-200-70 {
+  background-color: rgba(200, 200, 200, 0.7);
+}
+
+.bg-200-80 {
+  background-color: rgba(200, 200, 200, 0.8);
+}
+
+.bg-200-90 {
+  background-color: rgba(200, 200, 200, 0.9);
+}
+
+.bg-180-10 {
+  background-color: rgba(180, 180, 180, 0.1);
+}
+
+.bg-180-20 {
+  background-color: rgba(180, 180, 180, 0.2);
+}
+
+.bg-180-30 {
+  background-color: rgba(180, 180, 180, 0.3);
+}
+
+.bg-180-40 {
+  background-color: rgba(180, 180, 180, 0.4);
+}
+
+.bg-180-50 {
+  background-color: rgba(180, 180, 180, 0.5);
+}
+
+.bg-180-60 {
+  background-color: rgba(180, 180, 180, 0.6);
+}
+
+.bg-180-70 {
+  background-color: rgba(180, 180, 180, 0.7);
+}
+
+.bg-180-80 {
+  background-color: rgba(180, 180, 180, 0.8);
+}
+
+.bg-180-90 {
+  background-color: rgba(180, 180, 180, 0.9);
+}
+
+.bg-160-10 {
+  background-color: rgba(160, 160, 160, 0.1);
+}
+
+.bg-160-20 {
+  background-color: rgba(160, 160, 160, 0.2);
+}
+
+.bg-160-30 {
+  background-color: rgba(160, 160, 160, 0.3);
+}
+
+.bg-160-40 {
+  background-color: rgba(160, 160, 160, 0.4);
+}
+
+.bg-160-50 {
+  background-color: rgba(160, 160, 160, 0.5);
+}
+
+.bg-160-60 {
+  background-color: rgba(160, 160, 160, 0.6);
+}
+
+.bg-160-70 {
+  background-color: rgba(160, 160, 160, 0.7);
+}
+
+.bg-160-80 {
+  background-color: rgba(160, 160, 160, 0.8);
+}
+
+.bg-160-90 {
+  background-color: rgba(160, 160, 160, 0.9);
+}
+
+.bg-140-10 {
+  background-color: rgba(140, 140, 140, 0.1);
+}
+
+.bg-140-20 {
+  background-color: rgba(140, 140, 140, 0.2);
+}
+
+.bg-140-30 {
+  background-color: rgba(140, 140, 140, 0.3);
+}
+
+.bg-140-40 {
+  background-color: rgba(140, 140, 140, 0.4);
+}
+
+.bg-140-50 {
+  background-color: rgba(140, 140, 140, 0.5);
+}
+
+.bg-140-60 {
+  background-color: rgba(140, 140, 140, 0.6);
+}
+
+.bg-140-70 {
+  background-color: rgba(140, 140, 140, 0.7);
+}
+
+.bg-140-80 {
+  background-color: rgba(140, 140, 140, 0.8);
+}
+
+.bg-140-90 {
+  background-color: rgba(140, 140, 140, 0.9);
+}
+
+.bg-120-10 {
+  background-color: rgba(120, 120, 120, 0.1);
+}
+
+.bg-120-20 {
+  background-color: rgba(120, 120, 120, 0.2);
+}
+
+.bg-120-30 {
+  background-color: rgba(120, 120, 120, 0.3);
+}
+
+.bg-120-40 {
+  background-color: rgba(120, 120, 120, 0.4);
+}
+
+.bg-120-50 {
+  background-color: rgba(120, 120, 120, 0.5);
+}
+
+.bg-120-60 {
+  background-color: rgba(120, 120, 120, 0.6);
+}
+
+.bg-120-70 {
+  background-color: rgba(120, 120, 120, 0.7);
+}
+
+.bg-120-80 {
+  background-color: rgba(120, 120, 120, 0.8);
+}
+
+.bg-120-90 {
+  background-color: rgba(120, 120, 120, 0.9);
+}
+
+.bg-100-10 {
+  background-color: rgba(100, 100, 100, 0.1);
+}
+
+.bg-100-20 {
+  background-color: rgba(100, 100, 100, 0.2);
+}
+
+.bg-100-30 {
+  background-color: rgba(100, 100, 100, 0.3);
+}
+
+.bg-100-40 {
+  background-color: rgba(100, 100, 100, 0.4);
+}
+
+.bg-100-50 {
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+.bg-100-60 {
+  background-color: rgba(100, 100, 100, 0.6);
+}
+
+.bg-100-70 {
+  background-color: rgba(100, 100, 100, 0.7);
+}
+
+.bg-100-80 {
+  background-color: rgba(100, 100, 100, 0.8);
+}
+
+.bg-100-90 {
+  background-color: rgba(100, 100, 100, 0.9);
+}
+
+.bg-80-10 {
+  background-color: rgba(80, 80, 80, 0.1);
+}
+
+.bg-80-20 {
+  background-color: rgba(80, 80, 80, 0.2);
+}
+
+.bg-80-30 {
+  background-color: rgba(80, 80, 80, 0.3);
+}
+
+.bg-80-40 {
+  background-color: rgba(80, 80, 80, 0.4);
+}
+
+.bg-80-50 {
+  background-color: rgba(80, 80, 80, 0.5);
+}
+
+.bg-80-60 {
+  background-color: rgba(80, 80, 80, 0.6);
+}
+
+.bg-80-70 {
+  background-color: rgba(80, 80, 80, 0.7);
+}
+
+.bg-80-80 {
+  background-color: rgba(80, 80, 80, 0.8);
+}
+
+.bg-80-90 {
+  background-color: rgba(80, 80, 80, 0.9);
+}
+
+.bg-60-10 {
+  background-color: rgba(60, 60, 60, 0.1);
+}
+
+.bg-60-20 {
+  background-color: rgba(60, 60, 60, 0.2);
+}
+
+.bg-60-30 {
+  background-color: rgba(60, 60, 60, 0.3);
+}
+
+.bg-60-40 {
+  background-color: rgba(60, 60, 60, 0.4);
+}
+
+.bg-60-50 {
+  background-color: rgba(60, 60, 60, 0.5);
+}
+
+.bg-60-60 {
+  background-color: rgba(60, 60, 60, 0.6);
+}
+
+.bg-60-70 {
+  background-color: rgba(60, 60, 60, 0.7);
+}
+
+.bg-60-80 {
+  background-color: rgba(60, 60, 60, 0.8);
+}
+
+.bg-60-90 {
+  background-color: rgba(60, 60, 60, 0.9);
+}
+
+.bg-40-10 {
+  background-color: rgba(40, 40, 40, 0.1);
+}
+
+.bg-40-20 {
+  background-color: rgba(40, 40, 40, 0.2);
+}
+
+.bg-40-30 {
+  background-color: rgba(40, 40, 40, 0.3);
+}
+
+.bg-40-40 {
+  background-color: rgba(40, 40, 40, 0.4);
+}
+
+.bg-40-50 {
+  background-color: rgba(40, 40, 40, 0.5);
+}
+
+.bg-40-60 {
+  background-color: rgba(40, 40, 40, 0.6);
+}
+
+.bg-40-70 {
+  background-color: rgba(40, 40, 40, 0.7);
+}
+
+.bg-40-80 {
+  background-color: rgba(40, 40, 40, 0.8);
+}
+
+.bg-40-90 {
+  background-color: rgba(40, 40, 40, 0.9);
+}
+
+.bg-20-10 {
+  background-color: rgba(20, 20, 20, 0.1);
+}
+
+.bg-20-20 {
+  background-color: rgba(20, 20, 20, 0.2);
+}
+
+.bg-20-30 {
+  background-color: rgba(20, 20, 20, 0.3);
+}
+
+.bg-20-40 {
+  background-color: rgba(20, 20, 20, 0.4);
+}
+
+.bg-20-50 {
+  background-color: rgba(20, 20, 20, 0.5);
+}
+
+.bg-20-60 {
+  background-color: rgba(20, 20, 20, 0.6);
+}
+
+.bg-20-70 {
+  background-color: rgba(20, 20, 20, 0.7);
+}
+
+.bg-20-80 {
+  background-color: rgba(20, 20, 20, 0.8);
+}
+
+.bg-20-90 {
+  background-color: rgba(20, 20, 20, 0.9);
+}
+
+.bg-8-10 {
+  background-color: rgba(8, 8, 8, 0.1);
+}
+
+.bg-8-20 {
+  background-color: rgba(8, 8, 8, 0.2);
+}
+
+.bg-8-30 {
+  background-color: rgba(8, 8, 8, 0.3);
+}
+
+.bg-8-40 {
+  background-color: rgba(8, 8, 8, 0.4);
+}
+
+.bg-8-50 {
+  background-color: rgba(8, 8, 8, 0.5);
+}
+
+.bg-8-60 {
+  background-color: rgba(8, 8, 8, 0.6);
+}
+
+.bg-8-70 {
+  background-color: rgba(8, 8, 8, 0.7);
+}
+
+.bg-8-80 {
+  background-color: rgba(8, 8, 8, 0.8);
+}
+
+.bg-8-90 {
+  background-color: rgba(8, 8, 8, 0.9);
 }
 
 [data-animation] {
@@ -173,6 +765,13 @@
 }
 [data-hover=underline]:hover::after, [data-hover=underline].active::after {
   width: 100%;
+}
+
+.banner {
+  width: 100%;
+  max-height: 75vh;
+  object-fit: cover;
+  object-position: center;
 }
 
 .btn {
@@ -338,6 +937,16 @@
 
 .flex.gap-xxl {
   gap: 72px;
+}
+
+@media (max-width: 768px) {
+  .flex-md-column {
+    flex-direction: column;
+  }
+}
+
+.flex-1 {
+  flex: 1;
 }
 
 .form {
@@ -1063,6 +1672,12 @@ span.wrap {
 .txt.sans {
   font-family: "Lato", sans-serif;
 }
+.txt.serif {
+  font-family: "Karma", serif;
+}
+.txt.italics {
+  font-style: italic;
+}
 .txt.color.white {
   color: white;
 }
@@ -1128,9 +1743,6 @@ span.wrap {
 }
 .txt[data-lh="3"] {
   line-height: 3;
-}
-.txt p + p {
-  margin-top: 30px;
 }
 
 aside {

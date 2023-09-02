@@ -1,33 +1,33 @@
-@use "../abstracts/" as a;
-@use "../layout" as l;
-@use "../theme/" as t;
+@use '../abstracts/' as a;
+@use '../layout' as l;
+@use '../theme/' as t;
 
 $flex-directions: (
-  "row": row,
-  "row-reverse": row-reverse,
-  "column": column,
-  "column-reverse": column-reverse,
+  'row': row,
+  'row-reverse': row-reverse,
+  'column': column,
+  'column-reverse': column-reverse,
 );
 
 $flex-wraps: (
-  "wrap": wrap,
-  "wrap-reverse": wrap-reverse,
-  "nowrap": nowrap,
+  'wrap': wrap,
+  'wrap-reverse': wrap-reverse,
+  'nowrap': nowrap,
 );
 
 $justify-contents: (
-  "justify-start": flex-start,
-  "justify-end": flex-end,
-  "justify-between": space-between,
-  "justify-around": space-around,
-  "justify-evenly": space-evenly,
+  'justify-start': flex-start,
+  'justify-end': flex-end,
+  'justify-between': space-between,
+  'justify-around': space-around,
+  'justify-evenly': space-evenly,
 );
 
 $align-items: (
-  "align-start": flex-start,
-  "align-end": flex-end,
-  "align-stretch": stretch,
-  "align-baseline": baseline,
+  'align-start': flex-start,
+  'align-end': flex-end,
+  'align-stretch': stretch,
+  'align-baseline': baseline,
 );
 
 .flex {
@@ -66,13 +66,13 @@ $align-items: (
 
 /* Gap Sizes */
 $gap-sizes: (
-  "xxs": 6px,
-  "xs": 12px,
-  "sm": 18px,
-  "md": 30px,
-  "lg": 42px,
-  "xl": 60px,
-  "xxl": 72px,
+  'xxs': 6px,
+  'xs': 12px,
+  'sm': 18px,
+  'md': 30px,
+  'lg': 42px,
+  'xl': 60px,
+  'xxl': 72px,
 );
 
 /* Gap */
@@ -80,4 +80,14 @@ $gap-sizes: (
   .flex.gap-#{$label} {
     gap: $size;
   }
+}
+
+.flex-md-column {
+  @include l.max(md) {
+    flex-direction: column;
+  }
+}
+
+.flex-1 {
+  flex: 1;
 }

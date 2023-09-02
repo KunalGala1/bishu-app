@@ -1,3 +1,7 @@
+<%
+const aboutParsedBody = JSON.parse(data.about.body);
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,8 +13,14 @@
 		<%- include('../partials/head') %>
 	</head>
 
-	<body>
+	<body class="bg-secondary">
 		<%- include('../partials/nav') %>
+		<section class="mw-xl pd-md">
+			<div class="flex flex-md-column align-start gap-lg">
+				<div style="flex: 1;"><img class="rd-md" src="<%= aboutParsedBody.file.location %>" alt="<%= aboutParsedBody.file.alt %>"></div>
+				<div class="txt sans color white flex column gap-sm" data-lh="1.5" style="flex: 1;"><%- aboutParsedBody.about %></div>
+			</div>
+		</section>
 		<%- include('../partials/footer') %>
 	</body>
 
