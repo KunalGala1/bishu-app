@@ -27,6 +27,17 @@ export const responseAction = (name, method, data) => {
         window.location.replace('/dashboard/videos/new');
       },
     },
+    tracks: {
+      post: () => {
+        window.location.replace(`/dashboard/tracks/${data.newDoc._id}/edit`);
+      },
+      delete: () => {
+        document.querySelector(`[data-id="${data.deletedDoc._id}"]`).remove();
+      },
+      save_and_add_new: () => {
+        window.location.replace('/dashboard/tracks/new');
+      },
+    },
     blogposts: {
       post: () => {
         window.location.replace(`/dashboard/blogposts/${data.newDoc._id}/edit`);

@@ -5,12 +5,7 @@ const nav = {
   {name: 'about'},
   {name: 'music'},
   {name: 'videos'},
-  {name: 'blog'},
-  {name: 'profile', menu: 'drop-down-menu', link_classes: 'drop-down-link', map: [
-    {name: 'profile', href: '#'},
-    {name: 'settings', href: '#'},
-    {name: 'login'}
-  ]},  
+  {name: 'blog'}, 
   ]
 }
 
@@ -58,4 +53,65 @@ const generateMenu = data => {
 			link.classList.toggle( 'active', link.getAttribute( 'href' ) === currentPath || ( link.getAttribute( 'href' ) === '/' && currentPath === '' ) );
 			link.setAttribute( 'data-hover', 'underline' ); // optional
 		} );
+</script>
+
+<style>
+	.scroll-top-btn {
+		display: none;
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		background-color: #333;
+		color: #fff;
+		border: none;
+		border-radius: 50%;
+		padding: 10px 15px;
+		cursor: pointer;
+		z-index: 1000;
+		transition: opacity 0.3s;
+	}
+
+	.scroll-top-btn:hover {
+		background-color: #555;
+	}
+</style>
+
+<div id="scrollTopBtn" class="scroll-top-btn">
+	<i class="fas fa-angle-up"></i>
+</div>
+
+<script>
+	document.addEventListener( 'DOMContentLoaded', function ( ) {
+		const scrollTopBtn = document.getElementById( 'scrollTopBtn' );
+		let hideTimeout; // Declare this variable to hold the timeout reference
+
+		function checkScrollPosition ( ) {
+			if ( window.scrollY > 500 ) {
+				clearTimeout( hideTimeout ); // Cancel the timeout
+				scrollTopBtn.style.display = 'block'; // Ensure it's set to block immediately
+				scrollTopBtn.style.opacity = '1';
+			} else {
+				scrollTopBtn.style.opacity = '0';
+				hideTimeout = setTimeout( function ( ) {
+					// Only hide if the opacity remains '0'
+					if ( scrollTopBtn.style.opacity === '0' ) {
+						scrollTopBtn.style.display = 'none';
+					}
+				}, 300 ); // Hide after fade out
+			}
+		}
+
+		// Initial check outside of the scroll listener
+		checkScrollPosition( );
+
+		window.addEventListener( 'scroll', checkScrollPosition );
+
+		scrollTopBtn.addEventListener( 'click', function ( ) {
+			window.scrollTo( {
+				top: 0,
+				left: 0,
+				behavior: 'smooth' // Smooth scrolling effect
+			} );
+		} );
+	} );
 </script>

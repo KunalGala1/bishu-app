@@ -9,6 +9,7 @@ const path = require('path');
 const User = require('../models/User');
 const Content = require('../models/Content');
 const Event = require('../models/Event');
+const Track = require('../models/Track');
 const Video = require('../models/Video');
 const Blogpost = require('../models/Blogpost');
 
@@ -17,6 +18,7 @@ const map = {
   User,
   Content,
   Event,
+  Track,
   Video,
   Blogpost,
 };
@@ -79,7 +81,7 @@ router.get('/', ensureAuthenticated, (req, res) => {
 const docs = [{ name: 'about' }];
 
 docs.forEach(doc => {
-  /* GET Document */
+  /* GET Edit Document Page */
   router.get('/' + doc.name, ensureAuthenticated, async (req, res) => {
     let options = {};
 
@@ -90,6 +92,15 @@ docs.forEach(doc => {
     options.formData = formData;
 
     res.render('admin/static_document', options);
+  });
+
+  /* GET Document */
+  router.get('/' + doc.name + '/:id', ensureAuthenticated, async (req, res) => {
+    const doc = await Content.findById(req.params.id);
+    res.json({
+      success: true,
+      doc,
+    });
   });
 
   /* PUT Document */
@@ -122,7 +133,7 @@ docs.forEach(doc => {
 // name: String (required) -- name of the route
 // model: String (optional) -- name of the model
 // content: Array (optional) -- additional content to be displayed on the page
-const lists = [{ name: 'events' }, { name: 'videos' }, { name: 'blogposts' }];
+const lists = [{ name: 'events' }, { name: 'tracks' }, { name: 'videos' }, { name: 'blogposts' }];
 
 const Model_Nomenclature = string => {
   return string.slice(0, -1).charAt(0).toUpperCase() + string.slice(0, -1).slice(1);

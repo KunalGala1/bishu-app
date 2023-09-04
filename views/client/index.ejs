@@ -1,5 +1,6 @@
 <% 
 const aboutParsedBody = JSON.parse(data.about.body);
+const musicParsedBody = JSON.parse(data.Track[0].body);
 const videoParsedBody = JSON.parse(data.Video[0].body);
 const blogpostParsedBody = JSON.parse(data.Blogpost[0].body);
 %>
@@ -33,7 +34,10 @@ const blogpostParsedBody = JSON.parse(data.Blogpost[0].body);
 					<a class="page-preview-link" href="/music">
 						<h1 class="header primary-header">Music</h1>
 					</a>
-					<div class="txt color white sans" data-lh="2"></div>
+					<div class="txt color white sans" data-lh="2" style="align-self: center;">
+						<h2 class="txt center mg-b-md"><%- musicParsedBody.title %></h2>
+						<div><%- musicParsedBody.track %></div>
+					</div>
 					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/music">More</a></div>
 
 				</div>

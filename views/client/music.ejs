@@ -11,6 +11,15 @@
 
 	<body class="bg-secondary">
 		<%- include('../partials/nav') %>
+		<section class="mw-xl pd-md flex gap-md wrap txt color white serif align-stretch">
+			<% data.Track.forEach(track => { %>
+			<% const trackParsedBody = JSON.parse(track.body) %>
+			<div style="flex: 1 0 45%; min-width: 400px;">
+				<div class="mg-b-sm"><%- trackParsedBody.title %></div>
+				<div><%- trackParsedBody.track %></div>
+			</div>
+			<% }) %>
+		</section>
 		<%- include('../partials/footer') %>
 	</body>
 

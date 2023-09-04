@@ -38,6 +38,27 @@
       { "tag": "textarea", "name": "video", "label": "Paste embeded video code here" }
     ]
   },
+  "tracks": {
+    "metadata": {
+      "action": "/dashboard/tracks",
+      "enctype": "multipart/form-data",
+      "name": "tracks",
+      "display": "Track",
+      "sitemap": {
+        "loc": "http://localhost:5000/",
+        "changefreq": "daily",
+        "priority": 0.5
+      },
+      "map": {
+        "thead": ["title"],
+        "tbody": ["title"]
+      }
+    },
+    "fields": [
+      { "tag": "textarea", "name": "title" },
+      { "tag": "textarea", "name": "track", "label": "Paste embeded track code here" }
+    ]
+  },
   "blogposts": {
     "metadata": {
       "action": "/dashboard/blogposts",

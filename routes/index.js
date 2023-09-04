@@ -5,6 +5,7 @@ const router = express.Router();
 const User = require('../models/User');
 const Content = require('../models/Content');
 const Event = require('../models/Event');
+const Track = require('../models/Track');
 const Video = require('../models/Video');
 const Blogpost = require('../models/Blogpost');
 
@@ -13,6 +14,7 @@ const map = {
   User,
   Content,
   Event,
+  Track,
   Video,
   Blogpost,
 };
@@ -23,11 +25,11 @@ const pages = [
     name: 'index',
     data: {
       docs: ['about'],
-      lists: ['Video', 'Blogpost'],
+      lists: ['Track', 'Video', 'Blogpost'],
     },
   },
   { path: 'about', data: { docs: ['about'] } },
-  { path: 'music' },
+  { path: 'music', data: { lists: ['Track'] } },
   { path: 'videos', data: { lists: ['Video'] } },
   { path: 'blog', data: { lists: ['Blogpost'] } },
 ];
