@@ -1,0 +1,39 @@
+=== 10-19-23 ===
+
+domain name
+nameservers
+
+- play music when hover over icon
+
+colors...
+
+contact page
+testemonials
+
+one under main image
+
+email me press 
+
+press-clipping page
+band photos
+
+photo page
+
+first page should have contact option
+
+(Contact me emphasis link)
+
+---
+
+bcjazz.net
+google domain
+
+---
+
+put website live on ip:port
+
+username: email
+password: WebProject2023!
+
+put back contact image from original draft
+
