@@ -32,6 +32,7 @@ const pages = [
   { path: 'music', data: { lists: ['Track'] } },
   { path: 'videos', data: { lists: ['Video'] } },
   { path: 'blog', data: { lists: ['Blogpost'] } },
+  { path: 'contact'}
 ];
 
 pages.forEach(page => {

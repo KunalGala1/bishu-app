@@ -9,9 +9,56 @@
   <%- include('../partials/head') %>
 </head>
 
-<body>
+<body class="bg-secondary">
   <%- include('../partials/nav') %>
-  <%- include('../sections/hero') %>
+  <section class="contact-section">
+    <form action="/mailsend" method="post" class="form contact-form" novalidate>
+      <div class="item">
+        <div class="subitem">
+          <label for="name">
+            Name
+          </label>
+          <input type="text" name="name" required />
+        </div>
+        <div class="subitem">
+          <label for="email">
+            Email
+          </label>
+          <input type="text" name="email" required />
+        </div>
+      </div>
+      <div class="item">
+        <div class="subitem">
+          <label for="subject">
+            Subject
+          </label>
+          <input type="text" name="subject" required />
+        </div>
+      </div>
+      <div class="item">
+        <div class="subitem">
+          <label for="message">
+            Message
+          </label>
+          <textarea name="message" id="" cols="30" rows="10"></textarea>
+        </div>
+      </div>
+      <div class="item">
+        <div class="subitem">
+          <label for="auth">2 + 1 = ?</label>
+          <input type="text" name="auth" required />
+        </div>
+      </div>
+      <div class="item">
+        <div class="subitem">
+          <button type="submit" class="btn btn-primary">
+            Send <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="contact-img"><img src="/img/young_bishu.jpg" alt="Young Bishu"></div>
+  </section>
   <%- include('../partials/footer') %>
 </body>
 

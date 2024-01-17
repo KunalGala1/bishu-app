@@ -129,3 +129,58 @@
     }
   }
 }
+
+.contact-form {
+  padding: 32px;
+
+  .item {
+    &:first-child {
+      display: flex;
+      justify-content: space-between;
+      .subitem {
+        width: 100%;
+        & + .subitem {
+          margin-left: 30px;
+        }
+      }
+    }
+
+    & + .item {
+      margin-top: 17.5px;
+    }
+
+    &:last-child {
+      margin-top: 30px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .subitem {
+      label {
+        display: block;
+        margin-bottom: 5px;
+        @include t.sans;
+        font-size: 12px;
+        color: white;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        // border: 1px solid rgba(210, 210, 210, 0.15);
+        background-color: var(--247);
+        @include t.sans;
+        font-size: 18px;
+        resize: none;
+        &:focus {
+          outline: solid 1px var(--60);
+        }
+      }
+
+      textarea {
+        height: 200px;
+      }
+    }
+  }
+}

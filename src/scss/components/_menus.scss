@@ -4,10 +4,33 @@
 
 .nav-menu {
   display: flex;
+  align-items: center;
   justify-content: space-around;
 
   & > li + li {
     margin-left: 30px;
+  }
+
+  @include l.max(md) {
+    li {
+      margin: 0 !important;
+    }
+  }
+
+  li:last-child {
+    background-color: var(--accent2);
+    @include a.transition;
+    a {
+      color: white;
+    }
+    padding: 5px 10px;
+    border-radius: 5px;
+    &:hover {
+      background-color: var(--accent);
+    }
+    a::after {
+      display: none;
+    }
   }
 }
 

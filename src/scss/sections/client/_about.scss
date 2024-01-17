@@ -1,0 +1,10 @@
+@use "../../abstracts/" as a;
+@use "../../layout/" as l;
+@use "../../theme/" as t;
+
+.about-img {
+  img {
+    width: 100%;
+  }
+  max-width: 500px;
+}

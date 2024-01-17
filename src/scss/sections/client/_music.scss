@@ -1,0 +1,16 @@
+@use "../../abstracts/" as a;
+@use "../../layout/" as l;
+@use "../../theme/" as t;
+
+.music-section {
+  @include l.max(sm) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  @include l.min(sm) {
+    & > div {
+      flex: 1 0 45%;
+    }
+  }
+}

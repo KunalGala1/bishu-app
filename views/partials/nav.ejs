@@ -5,7 +5,8 @@ const nav = {
   {name: 'about'},
   {name: 'music'},
   {name: 'videos'},
-  {name: 'blog'}, 
+  {name: 'blog'},
+  {name: 'contact'} 
   ]
 }
 
@@ -42,7 +43,6 @@ const generateMenu = data => {
 	<div class="burger">
 		<div></div>
 		<div></div>
-		<div></div>
 	</div>
 </nav>
 
@@ -74,6 +74,30 @@ const generateMenu = data => {
 	.scroll-top-btn:hover {
 		background-color: #555;
 	}
+
+	nav.nav-active .nav-menu {
+        display: flex; /* Or your preferred style for active state */
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		right: 0;
+		background-color: var(--main);
+		width: 100vw;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 16px;
+    }
+
+	.burger-active div:first-child {
+		transform: rotate(45deg) translate(6px, 6px);
+	}
+	.burger-active div:last-child {
+		transform: rotate(-45deg);
+	}
+	.no-scroll {
+		overflow: hidden;
+	}
 </style>
 
 <div id="scrollTopBtn" class="scroll-top-btn">
@@ -82,6 +106,17 @@ const generateMenu = data => {
 
 <script>
 	document.addEventListener( 'DOMContentLoaded', function ( ) {
+		// Handle burger menu toggle
+        const burger = document.querySelector('.burger');
+        const navMenu = document.querySelector('nav');
+
+        burger.addEventListener('click', function() {
+            navMenu.classList.toggle('nav-active');
+			burger.classList.toggle('burger-active');
+			document.body.classList.toggle('no-scroll');
+        });
+
+		// Scroll to top button
 		const scrollTopBtn = document.getElementById( 'scrollTopBtn' );
 		let hideTimeout; // Declare this variable to hold the timeout reference
 

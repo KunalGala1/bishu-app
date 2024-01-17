@@ -1,0 +1,23 @@
+@use "../../abstracts/" as a;
+@use "../../layout/" as l;
+@use "../../theme/" as t;
+
+.contact-section {
+  @include l.min(md) {
+    display: flex;
+    gap: 16px;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-img {
+  padding: 32px;
+  img {
+    width: 100%;
+    @include l.radius(sm);
+  }
+}

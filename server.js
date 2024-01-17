@@ -77,6 +77,7 @@ app.use("/", require("./routes/index"));
 app.use("/", require("./routes/users"));
 app.use("/dashboard", require("./routes/dashboard"));
 app.use("/", require("./routes/sitemap"));
+app.use('/', require('./routes/mail'));
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}...`);
