@@ -1,14 +1,7 @@
-@forward 'login';
-
-/* Home page */
-@forward 'hero';
-@forward 'page-previews';
+@forward "login";
 
 /* Contact page */
-@forward 'contact';
-
-/* About page */
-@forward 'about';
+@forward "contact";
 
 /* Music page */
-@forward 'music';
+@forward "music";

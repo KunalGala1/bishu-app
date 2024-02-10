@@ -1,12 +1,12 @@
-@use '../abstracts/' as a;
-@use '../layout' as l;
-@use '../theme/' as t;
+@use "../abstracts/" as a;
+@use "../layout" as l;
+@use "../theme/" as t;
 
 .btn {
   @include a.boxshadow(sm);
   @include l.padding(xs, sm);
   &.lg {
-    @include l.padding(sm, md);
+    @include l.padding(xs, md);
   }
   @include l.radius(xs);
   @include t.sans;

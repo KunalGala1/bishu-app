@@ -1,6 +1,6 @@
-@use '../abstracts/' as a;
-@use '../layout' as l;
-@use '../theme/' as t;
+@use "../abstracts/" as a;
+@use "../layout" as l;
+@use "../theme/" as t;
 
 /* Headers */
 
@@ -9,15 +9,6 @@
     @include t.serif;
     font-size: 36px;
   }
-}
-
-.hero-header {
-  @include t.serif;
-  font-size: 8vw;
-  text-align: center;
-  white-space: nowrap;
-  color: var(--accent);
-  text-transform: uppercase;
 }
 
 .dashboard-header {
@@ -42,11 +33,10 @@
 /* Links */
 
 %link-shared {
-  color: var(--200);
-  @include a.transition;
+  color: black;
   &:hover,
   &.active {
-    color: white;
+    color: red;
   }
 }
 
@@ -58,7 +48,6 @@
 .nav-link {
   @extend %link-shared;
   // TODO - bigger?
-  
 }
 
 .drop-down-link {
@@ -157,7 +146,7 @@ span.wrap {
 
   @for $i from 10 through 30 {
     $lh-value: calc($i / 10);
-    &[data-lh='#{$lh-value}'] {
+    &[data-lh="#{$lh-value}"] {
       line-height: $lh-value;
     }
   }

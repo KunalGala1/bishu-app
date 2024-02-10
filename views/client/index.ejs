@@ -1,9 +1,22 @@
 <% 
 const aboutParsedBody = JSON.parse(data.about.body);
-const musicParsedBody = JSON.parse(data.Track[0].body);
-const videoParsedBody = JSON.parse(data.Video[0].body);
-const blogpostParsedBody = JSON.parse(data.Blogpost[0].body);
+
+let music_track, video_track, blog_post;
+
+if (data.Track && data.Track.length > 0) {
+    music_track = JSON.parse(data.Track[0].body);
+}
+
+if (data.Video && data.Video.length > 0) {
+    video_track = JSON.parse(data.Video[0].body);
+}
+
+if (data.Blogpost && data.Blogpost.length > 0) {
+    blog_post = JSON.parse(data.Blogpost[0].body);
+	blog_post_metadata = data.Blogpost[0];
+}
 %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,60 +29,12 @@ const blogpostParsedBody = JSON.parse(data.Blogpost[0].body);
 		<%- include('../partials/head') %>
 	</head>
 
-	<body class="bg-secondary">
+	<body class="bg-red-950">
 		<%- include('../partials/nav') %>
 		<%- include('../sections/hero') %>
-		<div id="page-previews">
-			<section>
-				<div class="flex column align-start mw-md">
-					<a class="page-preview-link" href="/about">
-						<h1 class="header primary-header">About</h1>
-					</a>
-					<div class="txt color white sans flex column gap-sm" data-lh="2"><%- aboutParsedBody.intro %></div>
-					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/about">More</a></div>
-				</div>
-			</section>
-			<section>
-				<div class="flex column align-end mw-md">
-					<a class="page-preview-link" href="/music">
-						<h1 class="header primary-header">Music</h1>
-					</a>
-					<div class="txt color white sans" data-lh="2" style="align-self: center;">
-						<h2 class="txt center mg-b-md"><%- musicParsedBody.title %></h2>
-						<div><%- musicParsedBody.track %></div>
-					</div>
-					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/music">More</a></div>
 
-				</div>
-			</section>
-			<section>
-				<div class="flex column mw-md align-stretch">
-					<div class="txt color white sans" data-lh="2">
-						<h2 class="txt center mg-b-md"><%- videoParsedBody.title %></h2>
-						<div><%- videoParsedBody.video %></div>
-					</div>
-					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/videos">More</a></div>
+		<%- include('../sections/content_preview', {music_track, video_track, blog_post, blog_post_metadata}) %>
 
-				</div>
-			</section>
-			<section>
-				<div class="flex column align-end mw-md">
-					<a class="page-preview-link" href="/blog">
-						<h1 class="header primary-header">Blog</h1>
-					</a>
-					<a href="/blog/<%= blogpostParsedBody.slug %>">
-						<div class="txt color white sans" data-lh="2" style="width: 100%;">
-							<h2 class="txt center mg-b-md"><%- blogpostParsedBody.title %></h2>
-							<img src="<%= blogpostParsedBody.file.location %>" alt="<%= blogpostParsedBody.file.alt %>">
-							<div class="pd-t-md mw-xs"><%- blogpostParsedBody.description %></div>
-						</div>
-					</a>
-					<div class="btn-container flex mg-t-md"><a class="btn lg btn-accent" href="/blog">More</a></div>
-
-				</div>
-			</section>
-
-		</div>
 		<%- include('../partials/footer') %>
 	</body>
 

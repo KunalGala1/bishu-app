@@ -1,13 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 /* Import Models */
-const User = require('../models/User');
-const Content = require('../models/Content');
-const Event = require('../models/Event');
-const Track = require('../models/Track');
-const Video = require('../models/Video');
-const Blogpost = require('../models/Blogpost');
+const User = require("../models/User");
+const Content = require("../models/Content");
+const Event = require("../models/Event");
+const Track = require("../models/Track");
+const Video = require("../models/Video");
+const Blogpost = require("../models/Blogpost");
 
 /* Models Map */
 const map = {
@@ -21,21 +21,21 @@ const map = {
 
 const pages = [
   {
-    path: '',
-    name: 'index',
+    path: "",
+    name: "index",
     data: {
-      docs: ['about'],
-      lists: ['Track', 'Video', 'Blogpost'],
+      docs: ["about"],
+      lists: ["Track", "Video", "Blogpost"],
     },
   },
-  { path: 'about', data: { docs: ['about'] } },
-  { path: 'music', data: { lists: ['Track'] } },
-  { path: 'videos', data: { lists: ['Video'] } },
-  { path: 'blog', data: { lists: ['Blogpost'] } },
-  { path: 'contact'}
+  { path: "about", data: { docs: ["about"] } },
+  { path: "music", data: { lists: ["Track"], docs: ["music_page"] } },
+  { path: "videos", data: { lists: ["Video"], docs: ["video_page"] } },
+  { path: "blog", data: { lists: ["Blogpost"], docs: ["blog_page"] } },
+  { path: "contact" },
 ];
 
-pages.forEach(page => {
+pages.forEach((page) => {
   router.get(`/${page.path}`, async (req, res) => {
     let data = {};
 
@@ -52,7 +52,7 @@ pages.forEach(page => {
       // Fetching specific document by name
       if (page.data.docs) {
         for (const docName of page.data.docs) {
-          const doc = await Content.findOne({ name: docName }); // Assuming 'name' is the field you want to search by in the Content model.
+          const doc = await Content.findOne({ name: docName });
           if (doc) {
             data[docName] = doc;
           }
@@ -64,24 +64,24 @@ pages.forEach(page => {
   });
 });
 
-router.get('/blog/:slug', async (req, res) => {
+router.get("/blog/:slug", async (req, res) => {
   try {
     // Retrieve all posts
     const posts = await Blogpost.find();
 
     // Find the post with the matching slug
-    const post = posts.find(p => JSON.parse(p.body).slug === req.params.slug);
+    const post = posts.find((p) => JSON.parse(p.body).slug === req.params.slug);
 
     if (!post) {
       // If no post was found, redirect to /blog
-      return res.redirect('/blog');
+      return res.redirect("/blog");
     }
 
     // Render the blog post and pass the post data
-    res.render('client/blogpost', { data: post });
+    res.render("client/blogpost", { data: post });
   } catch (error) {
-    console.error('Error retrieving blog post:', error);
-    res.status(500).send('Internal Server Error');
+    console.error("Error retrieving blog post:", error);
+    res.status(500).send("Internal Server Error");
   }
 });
 

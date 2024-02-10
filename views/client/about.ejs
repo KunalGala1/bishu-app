@@ -13,12 +13,12 @@ const aboutParsedBody = JSON.parse(data.about.body);
 		<%- include('../partials/head') %>
 	</head>
 
-	<body class="bg-secondary">
+	<body class="bg-red-950">
 		<%- include('../partials/nav') %>
-		<section class="mw-xl pd-md">
-			<div class="flex flex-md-column justify-center gap-lg">
-				<div style="flex: 1;" class="about-img"><img class="rd-md" src="<%= aboutParsedBody.file.location %>" alt="<%= aboutParsedBody.file.alt %>"></div>
-				<div class="txt sans color white flex column gap-sm" data-lh="1.5" style="flex: 1;"><%- aboutParsedBody.about %></div>
+		<section class="max-w-[1200px] mx-auto p-8 sm:p-16">
+			<div class="flex flex-col lg:flex-row gap-8 sm:gap-16">
+				<div class="about-img lg:w-1/2 w-full"><img class="rounded w-full" src="<%= aboutParsedBody.file.location %>" alt="<%= aboutParsedBody.file.alt %>"></div>
+				<div class="text-gray-200 leading-9 space-y-8 lg:w-1/2"><%- aboutParsedBody.about %></div>
 			</div>
 		</section>
 		<%- include('../partials/footer') %>

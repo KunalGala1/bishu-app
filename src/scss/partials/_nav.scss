@@ -1,20 +1,19 @@
-@use '../abstracts/' as a;
-@use '../layout' as l;
-@use '../theme/' as t;
+@use "../abstracts/" as a;
+@use "../layout" as l;
+@use "../theme/" as t;
 
 nav {
   @include a.boxshadow;
   @include l.padding(md);
   @include t.serif;
-  color: white;
   a,
   span {
     text-transform: lowercase;
   }
-  position: sticky;
-  top: 0;
+  // position: sticky;
+  // top: 0;
 
-  background-color: var(--main);
+  background-color: white;
 
   display: flex;
   justify-content: space-between;
@@ -35,25 +34,12 @@ nav {
 .burger {
   display: none;
   cursor: pointer;
-
-  div {
-    background-color: var(--200);
-
-    width: 40px;
-    height: 4px;
-    @include l.radius(md);
-
-    & + div {
-      margin-top: 4px;
-    }
-  }
 }
 
 /* Tablet --> Mobile View */
 .nav-menu {
   @include l.max(md) {
     display: none;
-    // ... mobile menu styling here
   }
 }
 

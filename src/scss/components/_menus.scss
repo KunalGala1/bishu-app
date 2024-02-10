@@ -18,16 +18,12 @@
   }
 
   li:last-child {
-    background-color: var(--accent2);
-    @include a.transition;
+    background-color: var(--accent);
     a {
       color: white;
     }
-    padding: 5px 10px;
-    border-radius: 5px;
-    &:hover {
-      background-color: var(--accent);
-    }
+    padding: 4px 8px;
+    border-radius: 4px;
     a::after {
       display: none;
     }
