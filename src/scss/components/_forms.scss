@@ -1,9 +1,9 @@
-@use '../abstracts/' as a;
-@use '../layout' as l;
-@use '../theme/' as t;
+@use "../abstracts/" as a;
+@use "../layout" as l;
+@use "../theme/" as t;
 
 .form {
-  @include l.radius(xs);
+  border-radius: 4px;
 
   label,
   input,
@@ -35,14 +35,14 @@
     resize: none;
     border: none;
     @include l.padding(sm);
-    @include l.radius(xs);
+    border-radius: 4px;
     &:focus {
       outline: solid 1px var(--200);
     }
   }
 
-  input[type='date'],
-  input[type='time'] {
+  input[type="date"],
+  input[type="time"] {
     width: max-content;
   }
 
@@ -63,7 +63,8 @@
 
 .dashboard-form {
   @include t.util;
-  @include l.radius(xs);
+  border-radius: 4px;
+
   @include a.boxshadow;
   height: 100%;
   overflow: auto;
@@ -73,7 +74,8 @@
   input,
   textarea {
     border: solid 1px rgba(0, 0, 0, 0.1);
-    @include l.radius(xs);
+    border-radius: 4px;
+
     @include l.padding(xs);
   }
 
@@ -81,7 +83,7 @@
     background-color: rgba(200, 200, 200, 0.1);
   }
 
-  input[type='file'] {
+  input[type="file"] {
     display: none;
   }
 
@@ -91,14 +93,15 @@
     margin-bottom: 0;
     padding: 10px;
     border: solid 1px rgba(0, 0, 0, 0.1);
-    @include l.radius(xs);
+    border-radius: 4px;
+
     @include l.padding(xs);
     &:hover {
       background-color: rgba(200, 200, 200, 0.1);
     }
   }
 
-  input[type='hidden'] + .item {
+  input[type="hidden"] + .item {
     margin-top: 30px;
   }
 
@@ -108,7 +111,7 @@
     position: sticky;
     top: 0;
     z-index: 5;
-    border-radius: 5px 5px 0 0;
+    border-radius: 4px 4px 0 0;
   }
 
   .content {
@@ -118,21 +121,21 @@
   .preview {
     max-width: 400px;
     margin: 30px 0;
-    @include l.radius(md);
+    border-radius: 4px;
+
     display: none;
     &.active {
       display: block;
     }
     img {
-      @include l.radius(xs);
+      border-radius: 4px;
+
       @include a.boxshadow;
     }
   }
 }
 
 .contact-form {
-  padding: 32px;
-
   .item {
     &:first-child {
       display: flex;

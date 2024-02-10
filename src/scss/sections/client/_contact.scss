@@ -13,11 +13,3 @@
   max-width: 1000px;
   margin: 0 auto;
 }
-
-.contact-img {
-  padding: 32px;
-  img {
-    width: 100%;
-    @include l.radius(sm);
-  }
-}

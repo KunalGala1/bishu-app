@@ -15,11 +15,11 @@
 	<body class="bg-red-950">
 		<%- include('../partials/nav') %>
 
-		<main class="sm:flex max-w-[1500px] mx-auto">
+		<main class="sm:flex max-w-[1200px] mx-auto">
 
 		<% if (music_page_image) { %>
 			<section class="p-6 sm:w-1/3">
-			  <img src="<%= music_page_image.location %>" alt="<%= music_page_image.alt %>" class="rounded w-full max-w-[450px] mx-auto">
+			  <img src="<%= music_page_image.location %>" alt="<%= music_page_image.alt %>" class="rounded w-full max-w-[450px] mx-auto sm:pt-8">
 			  <% if (music_page_description) { %>
 			   <div class="text-slate-200 mt-4">
 				<%- music_page_description %>
@@ -28,11 +28,11 @@
 			</section>
 		  <% } %>
 
-		<section class="mw-xl p-6 flex gap-md wrap txt color white serif align-stretch music-section sm:w-2/3">
+		<section class="mw-xl p-6 flex gap-md wrap serif align-stretch music-section sm:w-2/3">
 			<% data.Track.forEach(track => { %>
 			<% const trackParsedBody = JSON.parse(track.body) %>
 			<div>
-				<div class="mg-b-sm"><%- trackParsedBody.title %></div>
+				<div class="mb-2 text-white"><%- trackParsedBody.title %></div>
 				<div><%- trackParsedBody.track %></div>
 			</div>
 			<% }) %>

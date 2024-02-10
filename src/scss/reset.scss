@@ -55,6 +55,14 @@ button,
 textarea,
 select {
   font: inherit;
+  outline: none;
+  border: none;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+  outline: dotted 2px red;
 }
 
 button {

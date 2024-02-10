@@ -14,12 +14,11 @@ const transporter = nodemailer.createTransport({
 
 router.post("/mailsend", async (req, res) => {
   const { name, email, subject, message } = req.body;
-  console.log("Data: ", req.body);
 
   const messageHtml = message.replace(/\n/g, "<br>");
 
   const output = `
-    <p>You have a new contact request</p>
+    <p>bcjazz.net website form</p>
     <h3>Contact Details</h3>
     <ul>
         <li>Name: ${name}</li>
@@ -39,7 +38,7 @@ router.post("/mailsend", async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    res.status(200).json({ msg: "Email has been sent" });
+    res.redirect("/contact?msg=Email+has+been+sent");
   } catch (error) {
     console.log(error);
     res.status(500).send("Error sending email");

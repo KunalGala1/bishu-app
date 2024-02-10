@@ -1,7 +1,7 @@
 <%
 const arr = [
     {title: 'music', data: music_track}, 
-    {title: 'video', data: video_track}, 
+    {title: 'videos', data: video_track}, 
     {title: 'blog', data: blog_post}] 
 %>
 
@@ -10,11 +10,11 @@ const arr = [
         <% if (arr[i].data) { %>
             <% const content = arr[i] %>
             <section class="p-4 space-y-8">                
-                <h2 class="text-gold bg-red-800 w-max uppercase py-2 px-4 text-lg font-serif rounded"><%= content.title %></h2>
+                <a href="/<%= content.title %>"><h2 class="text-gold bg-red-800 w-max uppercase py-2 px-4 text-lg font-serif rounded"><%= content.title %></h2></a>
                 <div>
                     <% if (content.title === 'music') { %>
                         <%- content.data.track %>
-                    <% } else if (content.title === 'video') { %>
+                    <% } else if (content.title === 'videos') { %>
                         <%- content.data.video %>
                     <% } else if (content.title === 'blog') { %>
                         <% 
