@@ -10,7 +10,7 @@ const handleTableObject = (j, k) => {
 
 <div class="dashboard-table--container">
   <div class="table-header">
-    <div class="flex justify-between">
+    <div class="flex items-center justify-between">
       <h2 class="dashboard-header"><%= name %></h2>
       <h3 class="dashboard-subheader"><%= data.length %> document<%= data.length !== 1 ? 's' : '' %></h3>
     </div>
@@ -41,9 +41,9 @@ const handleTableObject = (j, k) => {
         <% } %>
         <% } %>
         <td>
-          <ul class="flex gap-sm">
-            <li><a href="<%= `/dashboard/${name}/${data[j]._id}/edit` %>" class="icon-link flex"><i class="fa-solid fa-pen"></i></a></li>
-            <li><a href="<%= `/dashboard/${name}/${data[j]._id}/delete` %>" class="icon-link flex delete-link" data-id="<%= data[j]._id %>"><i class="fa-solid fa-trash"></i></a></li>
+          <ul class="flex justify-center items-center gap-sm">
+            <li><a href="<%= `/dashboard/${name}/${data[j]._id}/edit` %>" class="icon-link flex justify-center items-center"><i class="fa-solid fa-pen"></i></a></li>
+            <li><a href="<%= `/dashboard/${name}/${data[j]._id}/delete` %>" class="icon-link flex justify-center items-center delete-link" data-id="<%= data[j]._id %>"><i class="fa-solid fa-trash"></i></a></li>
           </ul>
         </td>
       </tr>
