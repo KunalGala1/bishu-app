@@ -25,7 +25,11 @@ const pages = [
     name: "index",
     data: {
       docs: ["about"],
-      lists: ["Track", "Video", "Blogpost"],
+      lists: [
+        "Track",
+        "Video",
+        // "Blogpost"
+      ],
     },
   },
   { path: "about", data: { docs: ["about"] } },
