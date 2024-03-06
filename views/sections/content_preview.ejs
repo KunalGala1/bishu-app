@@ -1,18 +1,33 @@
 <%
 const arr = [
+    {title: 'about', data: aboutParsedBody},
     {title: 'music', data: music_track}, 
     {title: 'videos', data: video_track}, 
-    {title: 'blog', data: blog_post}] 
+    // {title: 'blog', data: blog_post}
+]
 %>
 
-<main class="max-w-[1200px] mx-auto space-y-16">
+<main class="max-w-[1200px] mx-auto sm:space-y-16">
     <% for( let i = 0; i < arr.length; i++ ) { %>
         <% if (arr[i].data) { %>
             <% const content = arr[i] %>
             <section class="p-4 space-y-8">                
-                <a href="/<%= content.title %>"><h2 class="text-gold bg-red-800 w-max uppercase py-2 px-4 text-lg font-serif rounded"><%= content.title %></h2></a>
+                <a href="/<%= content.title %>" class="block w-max"><h2 class="text-gold bg-red-800 uppercase py-2 px-4 text-lg font-serif rounded"><%= content.title %></h2></a>
                 <div>
-                    <% if (content.title === 'music') { %>
+                    <% if (content.title === 'about') { %>
+                        <%
+                        const intro = content.data.intro;
+                        const image = content.data.file.location;
+                        const image_alt = content.data.file.alt;
+                        %>
+                        <div class="text-white space-y-8">
+                            <%- intro %>
+                        </div>
+                        <div>
+                            <img src="<%= image %>" alt="<%= image_alt %>">
+                            <span class="text-sm text-white/50"><%= image_alt %></span>
+                        </div>
+                    <% } else if (content.title === 'music') { %>
                         <%- content.data.track %>
                     <% } else if (content.title === 'videos') { %>
                         <%- content.data.video %>

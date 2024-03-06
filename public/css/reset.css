@@ -61,8 +61,8 @@ select {
 
 input:focus,
 textarea:focus,
-button:focus {
-  outline: dotted 2px red;
+button:focus:not(.btn-success) {
+  outline: dotted 2px #ffd700;
 }
 
 button {

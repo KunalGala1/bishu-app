@@ -1,0 +1,21 @@
+<form action="/mailsend" method="post" class="text-gray-200 space-y-4 sm:w-3/5 mx-auto">
+    <div class="flex flex-col">
+      <label for="name">Name*</label>
+      <input type="text" name="name" class="rounded p-2 bg-gray-200 text-black" required>
+    </div>
+    <div class="flex flex-col">
+      <label for="email">Email*</label>
+      <input type="text" name="email" class="rounded p-2 bg-gray-200 text-black" required>
+    </div>
+    <div class="flex flex-col">
+      <label for="subject">Subject*</label>
+      <input type="text" name="subject" class="rounded p-2 bg-gray-200 text-black" required>
+    </div>
+    <div class="flex flex-col">
+      <label for="message">Message</label>
+      <textarea name="message" id="" cols="30" rows="10" class="rounded p-2 bg-gray-200 text-black"></textarea>
+    </div>
+    <div class="flex flex-col w-max ml-auto">
+      <button type="submit">Send <i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </form>

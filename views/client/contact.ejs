@@ -14,30 +14,16 @@
 
   <!-- Tailwind -->
   <main class="max-w-[1000px] mx-auto p-8">
-    <h2 class="text-white/75 text-center font-bold mb-8">Please use this form to get in touch</h2>
+    <%- include('../partials/ContactHeader') %>
     <section class="flex flex-col sm:flex-row gap-8 w-full">
-    <img src="/img/young_bishu.jpg" alt="" class="sm:w-2/5 object-cover object-center rounded">
-    <form action="/mailsend" method="post" class="text-gray-200 space-y-4 sm:w-3/5">
-      <div class="flex flex-col">
-        <label for="name">Name*</label>
-        <input type="text" name="name" class="rounded p-2 bg-gray-200 text-black" required>
+    <div class="sm:w-2/5 space-y-4">
+      <div class="text-slate-200 space-y-4">
+        <blockquote>&ldquo;It's [Saraswati] a very modern piece, a bit avant-garde, yet anchored in a beautiful melody laid out on one track.&rdquo;</blockquote>
+        <p>&mdash; Jim Trageser, All About Jazz</p>
       </div>
-      <div class="flex flex-col">
-        <label for="email">Email*</label>
-        <input type="text" name="email" class="rounded p-2 bg-gray-200 text-black" required>
-      </div>
-      <div class="flex flex-col">
-        <label for="subject">Subject*</label>
-        <input type="text" name="subject" class="rounded p-2 bg-gray-200 text-black" required>
-      </div>
-      <div class="flex flex-col">
-        <label for="message">Message</label>
-        <textarea name="message" id="" cols="30" rows="10" class="rounded p-2 bg-gray-200 text-black"></textarea>
-      </div>
-      <div class="flex flex-col w-max ml-auto">
-        <button type="submit">Send <i class="fa-solid fa-paper-plane"></i></button>
-      </div>
-    </form>
+      <img src="/img/young_bishu.jpg" alt="Young Bishu" class="w-full object-cover object-center rounded">
+    </div>
+    <%- include('../sections/contact_form') %>
     </section>
   </main>
   <%- include('../partials/footer') %>
