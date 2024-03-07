@@ -42,12 +42,16 @@
         "priority": 0.5
       },
       "map": {
-        "thead": ["title"],
-        "tbody": ["title"]
+        "thead": ["title", "description"],
+        "tbody": ["title", "description"]
       }
     },
     "fields": [
       { "tag": "textarea", "name": "title" },
+      {
+        "tag": "textarea",
+        "name": "description"
+      },
       {
         "tag": "textarea",
         "name": "video",
@@ -78,12 +82,13 @@
         "priority": 0.5
       },
       "map": {
-        "thead": ["title"],
-        "tbody": ["title"]
+        "thead": ["title", "description"],
+        "tbody": ["title", "description"]
       }
     },
     "fields": [
       { "tag": "textarea", "name": "title" },
+      { "tag": "textarea", "name": "description" },
       {
         "tag": "textarea",
         "name": "track",
@@ -147,7 +152,12 @@
     "fields": [
       { "tag": "textarea", "name": "intro" },
       { "type": "file", "label": "image", "required": "true" },
-      { "tag": "textarea", "name": "about" }
+      { "tag": "textarea", "name": "about" },
+      {
+        "tag": "textarea",
+        "name": "video",
+        "label": "Paste embeded video code here"
+      }
     ]
   }
 }

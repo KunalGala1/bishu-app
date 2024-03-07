@@ -14,6 +14,9 @@
 
 	<body class="bg-red-950">
 		<%- include('../partials/nav') %>
+		<%- include('../partials/NameSplash') %>
+
+
 		<% if (blog_page_image) { %>
 		 <section class="w-full h-[30vh] sm:h-[500px] lg:h-[700px] max-w-[2000px] mx-auto">
 			<img src="<%= blog_page_image.location %>" alt="<%= blog_page_image.alt %>" class="object-cover object-center w-full h-full">
@@ -42,7 +45,6 @@
 				No blog posts yet...
 			</section>
 		<% } %>
-		<%- include('../partials/footer') %>
 	</body>
 
 </html>

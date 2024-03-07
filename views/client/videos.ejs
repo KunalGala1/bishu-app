@@ -1,5 +1,9 @@
-<% const video_page_image = JSON.parse(data.video_page.body).file %>
-<% const video_page_description = JSON.parse(data.video_page.body).description %>
+<% 
+const videoPageParsedBody = JSON.parse(data.video_page.body);
+const image = videoPageParsedBody.file.location;
+const alt = videoPageParsedBody.file.alt;
+const description = videoPageParsedBody.description;
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,27 +18,37 @@
 
 	<body class="bg-red-950">
 		<%- include('../partials/nav') %>
+		<%- include('../partials/NameSplash') %>
+		<!-- Display full width image on smaller screens -->
+		<img src="<%= image %>" alt="<%= alt %>" class="w-full sm:hidden">
 
 		<main class="flex flex-col gap-16 sm:flex-row sm:p-8 max-w-[1200px] mx-auto">
 
-			<% if (video_page_image) { %>
+			<% if (image) { %>
 				<section class="sm:w-2/5 p-8 sm:p-0">
-				<img src="<%= video_page_image.location %>" alt="<%= video_page_image.alt %>" class="rounded w-full sm:pt-8">
-				<% if (video_page_description) { %>
-					<div class="text-slate-200 mt-4 space-y-4">
-						<%- video_page_description %>
-					   </div>
-				<% } %>
+					<!-- Display padded image on larger screens -->
+					<img src="<%= image %>" alt="<%= alt %>" class="rounded w-full sm:pt-8 hidden sm:block">
+					<% if (description) { %>
+						<div class="text-slate-200 mt-4 space-y-4">
+							<%- description %>
+						</div>
+					<% } %>
 				</section>
 			<% } %>
 
 
 			<section class="text-white flex flex-col gap-16 sm:w-3/5">
 				<% data.Video.forEach(video => { %>
-				<% const videoParsedBody = JSON.parse(video.body) %>
-				<div class="w-full">
-					<div class="mb-2 font-serif px-4 sm:px-0"><%- videoParsedBody.title %></div>
-					<div><%- videoParsedBody.video %></div>
+				<%
+				const videoParsedBody = JSON.parse(video.body);
+				const title = videoParsedBody.title;
+				const videoContent = videoParsedBody.video;
+				const videoDescription = videoParsedBody.description;
+				%>
+				<div class="w-full space-y-4">
+					<div class="font-serif px-4 sm:px-0"><%- title %></div>
+					<div><%- videoContent %></div>
+					<div class="text-sm text-slate-200 space-y-2 px-4 sm:px-0"><%- videoDescription %></div>
 				</div>
 				<% }) %>
 			</section>
@@ -42,7 +56,6 @@
 		</main>
 
 
-		<%- include('../partials/footer') %>
 	</body>
 
 </html>

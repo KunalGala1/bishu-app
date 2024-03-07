@@ -1,5 +1,9 @@
 <%
 const aboutParsedBody = JSON.parse(data.about.body);
+const image = aboutParsedBody.file.location;
+const image_alt = aboutParsedBody.file.alt;
+const about_body = aboutParsedBody.about;
+const video = aboutParsedBody.video;
 %>
 
 <!DOCTYPE html>
@@ -15,13 +19,21 @@ const aboutParsedBody = JSON.parse(data.about.body);
 
 	<body class="bg-red-950">
 		<%- include('../partials/nav') %>
+		<%- include('../partials/NameSplash') %>
+		<!-- Display full width image on small screens -->
+		<img src="<%= image %>" alt="<%= image_alt %>" class="sm:hidden">
 		<section class="max-w-[1200px] mx-auto p-8 sm:p-16">
 			<div class="flex flex-col lg:flex-row gap-8 sm:gap-16">
-				<div class="about-img lg:w-1/2 w-full"><img class="rounded w-full" src="<%= aboutParsedBody.file.location %>" alt="<%= aboutParsedBody.file.alt %>"></div>
-				<div class="text-gray-200 space-y-8 lg:w-1/2"><%- aboutParsedBody.about %></div>
+				<!-- Display padded image on larger screens -->
+				<div class="about-img lg:w-1/2 w-full hidden sm:block">
+					<img class="rounded w-full" src="<%= image %>" alt="<%= image_alt %>">
+				</div>
+				<div class="text-gray-200 space-y-8 lg:w-1/2">
+					<%- about_body %>
+					<%- video %>
+				</div>
 			</div>
 		</section>
-		<%- include('../partials/footer') %>
 	</body>
 
 </html>
