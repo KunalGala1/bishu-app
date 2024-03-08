@@ -20,8 +20,9 @@
 		<% if (blog_page_image) { %>
 		 <section class="w-full h-[30vh] sm:h-[500px] lg:h-[700px] max-w-[2000px] mx-auto">
 			<img src="<%= blog_page_image.location %>" alt="<%= blog_page_image.alt %>" class="object-cover object-center w-full h-full">
-		 </section>
+		</section>
 		<% } %>
+		<div class="text-white max-w-[1000px] mx-auto p-8"><%- blog_page_description %></div>
 		<% if (data.Blogpost.length > 0) { %>					
 			<section class="max-w-[1200px] mx-auto p-8 flex gap-8 flex-wrap">
 				<% for( let i = 0; i < data.Blogpost.length; i++ ) { %>
