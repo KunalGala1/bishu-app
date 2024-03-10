@@ -31,7 +31,7 @@ router.post("/mailsend", async (req, res) => {
 
   const mailOptions = {
     from: "k2awesomeness@gmail.com",
-    to: "k2awesomeness@gmail.com",
+    to: ["k2awesomeness@gmail.com"],
     subject: subject,
     html: output,
   };

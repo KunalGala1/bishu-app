@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "concurrently \"nodemon server.js\" \"gulp\" \"sass src/scss:public/css --no-source-map --watch\" \"npx tailwindcss -i ./src/css/input.css -o ./public/css/output.css --watch\"",
-    "kill": "killall node"
+    "kill": "killall node",
+    "ssh": "ssh ec2-user@3.23.95.226"
   },
   "author": "Kunal Gala",
   "license": "ISC",
