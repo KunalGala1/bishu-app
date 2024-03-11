@@ -1,3 +1,5 @@
+<% console.log(tableData.name) %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +15,26 @@
   <%- include('../partials/aside') %>
   <main class="sp-aside-left">
     <%- include('../partials/table', tableData) %>
+    
+    <% if (tableData.name === 'videos') { %>
+        <section class="p-4 space-y-4">
+          <h2>Choose Featured Video:</h2>
+          <form action="/dashboard/featured/video" method="POST" class="space-y-4" id="featured-video-form">
+            <select name="featured_video" id="featured_video" class="p-2 rounded">
+              <% tableData.data.forEach(video => { %>
+                <option value="<%= video._id %>"><%- JSON.parse(video.body).title %></option>
+              <% }) %>
+            </select>
+            <button type="submit" class="block max-w py-2 px-4 rounded bg-green-700 text-white">Submit</button>
+        </section>
+
+        <script src="/js/featuredMedia.js" defer></script>
+      
+      <% } %>
+      
+      
   </main>
+
 </body>
 
 </html>

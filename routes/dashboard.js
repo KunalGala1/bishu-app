@@ -281,4 +281,29 @@ lists.forEach((list) => {
   });
 });
 
+// Featured
+router.put("featured/video", ensureAuthenticated, async (req, res) => {
+  try {
+    const { video } = req.body;
+
+    const featuredVideo = await FeaturedVideo.findOne();
+
+    if (featuredVideo) {
+      featuredVideo.video = video;
+      await featuredVideo.save();
+    } else {
+      await FeaturedVideo.create({ video });
+    }
+
+    res.json({
+      success: true,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      error: "Something went wrong",
+    });
+  }
+});
+
 module.exports = router;
