@@ -159,5 +159,16 @@
         "label": "Paste embeded video code here"
       }
     ]
+  },
+  "contact": {
+    "metadata": {
+      "action": "/dashboard/contact",
+      "name": "contact",
+      "display": "Contact"
+    },
+    "fields": [
+      { "name": "description" },
+      { "type": "file", "label": "image", "required": "true" }
+    ]
   }
 }

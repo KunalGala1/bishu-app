@@ -24,7 +24,7 @@ const pages = [
     path: "",
     name: "index",
     data: {
-      docs: ["about"],
+      docs: ["about", "contact"],
       lists: [
         "Track",
         "Video",
@@ -36,7 +36,7 @@ const pages = [
   { path: "music", data: { lists: ["Track"], docs: ["music_page"] } },
   { path: "videos", data: { lists: ["Video"], docs: ["video_page"] } },
   { path: "blog", data: { lists: ["Blogpost"], docs: ["blog_page"] } },
-  { path: "contact" },
+  { path: "contact", data: { docs: ["contact"] } },
 ];
 
 pages.forEach((page) => {

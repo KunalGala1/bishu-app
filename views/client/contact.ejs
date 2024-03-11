@@ -1,3 +1,10 @@
+<% 
+const contactParsedBody = JSON.parse(data['contact'].body);
+const description = contactParsedBody.description;
+const image = contactParsedBody.file.location;
+const alt = contactParsedBody.file.alt;
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,11 +22,11 @@
 
   <!-- Tailwind -->
   <main class="max-w-[1000px] mx-auto p-8">
-    <%- include('../partials/ContactHeader') %>
+    <%- include('../partials/ContactHeader', {description}) %>
     <section class="flex flex-col sm:flex-row gap-8 w-full">
     <div class="sm:w-2/5 space-y-4">
       
-      <img src="/img/young_bishu.jpg" alt="Young Bishu" class="w-full object-cover object-center rounded">
+      <img src="<%= image %>" alt="<%= alt %>" class="w-full object-cover object-center rounded">
     </div>
     <%- include('../sections/contact_form') %>
     </section>

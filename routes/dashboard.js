@@ -90,6 +90,7 @@ const docs = [
   { name: "music_page" },
   { name: "blog_page" },
   { name: "video_page" },
+  { name: "contact" },
 ];
 
 docs.forEach((doc) => {
