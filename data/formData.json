@@ -63,7 +63,12 @@
     "metadata": {
       "action": "/dashboard/video_page",
       "name": "video_page",
-      "display": "Video page"
+      "display": "Video page",
+      "sitemap": {
+        "loc": "http://localhost:5000/videos",
+        "changefreq": "daily",
+        "priority": 0.5
+      }
     },
     "fields": [
       { "tag": "textarea", "name": "description" },
@@ -100,7 +105,12 @@
     "metadata": {
       "action": "/dashboard/music_page",
       "name": "music_page",
-      "display": "Music page"
+      "display": "Music page",
+      "sitemap": {
+        "loc": "http://localhost:5000/music",
+        "changefreq": "daily",
+        "priority": 0.5
+      }
     },
     "fields": [
       { "tag": "textarea", "name": "description" },
@@ -136,7 +146,12 @@
     "metadata": {
       "action": "/dashboard/blog_page",
       "name": "blog_page",
-      "display": "Blog page"
+      "display": "Blog page",
+      "sitemap": {
+        "loc": "http://localhost:5000/blog",
+        "changefreq": "daily",
+        "priority": 0.5
+      }
     },
     "fields": [
       { "tag": "textarea", "name": "description" },
@@ -147,7 +162,12 @@
     "metadata": {
       "action": "/dashboard/about",
       "name": "about",
-      "display": "About"
+      "display": "About",
+      "sitemap": {
+        "loc": "http://localhost:5000/about",
+        "changefreq": "daily",
+        "priority": 0.5
+      }
     },
     "fields": [
       { "tag": "textarea", "name": "intro" },
@@ -164,11 +184,64 @@
     "metadata": {
       "action": "/dashboard/contact",
       "name": "contact",
-      "display": "Contact"
+      "display": "Contact",
+      "sitemap": {
+        "loc": "http://localhost:5000/contact",
+        "changefreq": "daily",
+        "priority": 0.5
+      }
     },
     "fields": [
       { "name": "description" },
       { "type": "file", "label": "image", "required": "true" }
+    ]
+  },
+  "home": {
+    "metadata": {
+      "action": "/dashboard/home",
+      "name": "home",
+      "display": "Home",
+      "sitemap": {
+        "loc": "http://localhost:5000/",
+        "changefreq": "daily",
+        "priority": 0.5
+      }
+    },
+    "fields": [
+      { "tag": "textarea", "name": "description" },
+      { "type": "file", "label": "image", "required": "true" },
+      {
+        "name": "featuredTrack",
+        "type": "reference",
+        "list": "Track",
+        "label": "Featured Track"
+      },
+      {
+        "name": "featuredVideo",
+        "type": "reference",
+        "list": "Video",
+        "label": "Featured Video"
+      }
+    ]
+  },
+  "nav": {
+    "metadata": {
+      "action": "/dashboard/nav",
+      "name": "nav",
+      "display": "Nav",
+      "sitemap": {
+        "loc": "http://localhost:5000/",
+        "changefreq": "daily",
+        "priority": 0.5
+      }
+    },
+    "fields": [
+      { "name": "home", "required": true },
+      { "name": "about", "required": true },
+      { "name": "music", "required": true },
+      { "name": "videos", "required": true },
+      { "name": "blog", "required": true },
+      { "name": "contact", "required": true }
     ]
   }
 }

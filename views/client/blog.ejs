@@ -23,9 +23,12 @@
 		</section>
 		<% } %>
 		<div class="text-white max-w-[1000px] mx-auto p-8"><%- blog_page_description %></div>
-		<% if (data.Blogpost.length > 0) { %>					
+		<% if (data.Blogpost.length > 0) { %>
+			<% 
+			const orderedPosts = data.Blogpost.sort((a, b) => new Date(b.date) - new Date(a.date));
+			%>				
 			<section class="max-w-[1200px] mx-auto p-8 flex gap-8 flex-wrap">
-				<% for( let i = 0; i < data.Blogpost.length; i++ ) { %>
+				<% for( let i = 0; i < orderedPosts.length; i++ ) { %>
 					<% const post = JSON.parse(data.Blogpost[i].body) %>
 					<% 
 					// Date Formatting
@@ -43,7 +46,7 @@
 			</section>
 		<% } else { %>
 			<section class="text-gray-200 text-center p-8">
-				No blog posts yet...
+				No blog posts/events yet...
 			</section>
 		<% } %>
 	</body>

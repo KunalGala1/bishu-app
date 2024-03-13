@@ -16,25 +16,27 @@ document.addEventListener("DOMContentLoaded", () => {
         formObject[key] = value;
       }
 
-      const { name, email, subject, auth } = formObject;
+      const { name, email, subject } = formObject;
 
       // Regular expression for email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (!name || !email || !subject || !auth) {
-        toastNotification("All required fields must be filled out",
+      if (!name || !email || !subject) {
+        toastNotification(
+          "All required fields must be filled out",
           "danger",
           5000
         );
         return false;
       } else if (!emailRegex.test(email)) {
-        toastNotification("Please enter a valid email address",
+        toastNotification("Please enter a valid email address", "danger", 5000);
+        return false;
+      } else if (auth.toLowerCase() !== "3" && auth.toLowerCase() !== "three") {
+        toastNotification(
+          "Security question was answered incorrectly",
           "danger",
           5000
         );
-        return false;
-      } else if (auth.toLowerCase() !== "3" && auth.toLowerCase() !== "three") {
-        toastNotification("Security question was answered incorrectly", "danger", 5000);
         return false;
       }
 

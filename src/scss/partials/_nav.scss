@@ -6,10 +6,7 @@ nav {
   @include a.boxshadow;
   @include l.padding(md);
   @include t.serif;
-  a,
-  span {
-    text-transform: lowercase;
-  }
+
   // position: sticky;
   // top: 0;
 
@@ -18,8 +15,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  text-transform: capitalize;
 
   z-index: 5;
 }

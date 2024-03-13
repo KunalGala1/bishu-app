@@ -43,12 +43,27 @@ pages.forEach((page) => {
   router.get(`/${page.path}`, async (req, res) => {
     let data = {};
 
+    const nav = await Content.findOne({ name: "nav" });
+    data.nav = nav;
+
     if (page.data) {
       // Fetching lists of documents
       if (page.data.lists) {
-        for (const modelName of page.data.lists) {
-          if (map[modelName]) {
-            data[modelName] = await map[modelName].find();
+        if (page.name === "index") {
+          const homePageDoc = await Content.findOne({ name: "home" });
+          const featuredTrack = await Track.findById(
+            JSON.parse(homePageDoc.body).featuredTrack
+          );
+          const featuredVideo = await Video.findById(
+            JSON.parse(homePageDoc.body).featuredVideo
+          );
+          data.featuredTrack = featuredTrack;
+          data.featuredVideo = featuredVideo;
+        } else {
+          for (const modelName of page.data.lists) {
+            if (map[modelName]) {
+              data[modelName] = await map[modelName].find();
+            }
           }
         }
       }
@@ -69,6 +84,9 @@ pages.forEach((page) => {
 });
 
 router.get("/blog/:slug", async (req, res) => {
+  let data = {};
+  const nav = await Content.findOne({ name: "nav" });
+  data.nav = nav;
   try {
     // Retrieve all posts
     const posts = await Blogpost.find();
@@ -81,8 +99,10 @@ router.get("/blog/:slug", async (req, res) => {
       return res.redirect("/blog");
     }
 
+    data.post = post;
+
     // Render the blog post and pass the post data
-    res.render("client/blogpost", { data: post });
+    res.render("client/blogpost", { data });
   } catch (error) {
     console.error("Error retrieving blog post:", error);
     res.status(500).send("Internal Server Error");

@@ -1,12 +1,16 @@
 <%
+
+const navParsedBody = JSON.parse(data.nav.body);
+console.log("🚀 ~ navParsedBody:", navParsedBody)
+
 const nav = {
   menu: 'nav-menu', link_classes: 'nav-link', map: [
-  {name: 'home'},
-  {name: 'about'},
-  {name: 'music'},
-  {name: 'videos'},
-  {name: 'blog'},
-  {name: 'contact'} 
+  {name: navParsedBody.home, href: '/'},
+  {name: navParsedBody.about, href: '/about'},
+  {name: navParsedBody.music, href: '/music'},
+  {name: navParsedBody.videos, href: '/videos'},
+  {name: navParsedBody.blog, href: '/blog'},
+  {name: navParsedBody.contact, href: '/contact'} 
   ]
 }
 
@@ -14,7 +18,7 @@ const generateMenu = data => {
   let html = `<ul class="${data.menu}">`;
   data.map.forEach(item => {
     const name = item.name;
-    let href = (item.name === 'home') ? '/' : (item.href || `/${item.name}`);    
+    let href = item.href;    
     if (!item.menu) html += `<li><a href='${href}' class="${data.link_classes}">${name}</a></li>`;
     else { html += `<li class="${item.menu + '--parent'}"><span>${name}</span>${generateMenu(item)}</li>`}
   })
@@ -77,7 +81,7 @@ const generateMenu = data => {
 	}
 </style>
 
-<div id="scrollTopBtn" class="scroll-top-btn hover:bg-gray-950 bg-black hidden fixed bottom-5 right-5 text-white rounded-full border-none py-2.5 px-4 cursor-pointer z-10">
+<div id="scrollTopBtn" class="scroll-top-btn hover:bg-gray-950 bg-black hidden fixed bottom-[88px] right-[13px] text-white rounded-full border-none py-2.5 px-4 cursor-pointer z-10">
 	<i class="fas fa-angle-up"></i>
 </div>
 

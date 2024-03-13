@@ -1832,12 +1832,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-transform: capitalize;
   z-index: 5;
-}
-nav a,
-nav span {
-  text-transform: lowercase;
 }
 
 .logo {

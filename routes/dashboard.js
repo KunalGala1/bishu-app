@@ -86,6 +86,8 @@ router.get("/", ensureAuthenticated, (req, res) => {
 
 /* Content Model Put Routes */
 const docs = [
+  { name: "nav" },
+  { name: "home", reference: ["Track", "Video"] },
   { name: "about" },
   { name: "music_page" },
   { name: "blog_page" },
@@ -103,6 +105,14 @@ docs.forEach((doc) => {
 
     options.doc = data;
     options.formData = formData;
+
+    if (doc.reference) {
+      options.lists = {};
+      for (let i = 0; i < doc.reference.length; i++) {
+        const data = await map[doc.reference[i]].find();
+        options.lists[doc.reference[i]] = data;
+      }
+    }
 
     res.render("admin/static_document", options);
   });

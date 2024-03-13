@@ -27,8 +27,70 @@
   </form>
 
   <script>
-    function onSubmit(token) {
-      document.getElementById("contact-form").submit();
+    async function onSubmit(token) {
+      const form = document.getElementById("contact-form");
+
+      const formData = new FormData(form);
+      let formObject = {};
+
+      for (let [key, value] of formData.entries()) {
+        formObject[key] = value;
+      }
+
+      const { name, email, subject } = formObject;
+
+      // Regular expression for email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!name || !email || !subject) {
+        toastNotification("All required fields must be filled out",
+          "danger",
+          5000
+        );
+        return false;
+      } else if (!emailRegex.test(email)) {
+        toastNotification("Please enter a valid email address",
+          "danger",
+          5000
+        );
+        return false;
+      } 
+
+      // If everything is filled out, send the POST request
+      try {
+        console.log(formObject);
+        const response = await fetch("/mailsend", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formObject),
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        toastNotification(data.message, "success", 5000);
+        form.reset();
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+        toastNotification(`Error: ${error.message}`, "danger", 5000);
+      }
     }
+
+    const toastNotification = (message, type, duration = 1000) => {
+      const toastNotification = document.createElement("div");
+      toastNotification.classList.add("toast-notification", "active", type);
+      toastNotification.textContent = message;
+      document.body.appendChild(toastNotification);
+      setTimeout(() => {
+        toastNotification.classList.remove("active");
+        setTimeout(() => {
+          toastNotification.remove();
+        }, 250);
+      }, duration);
+    };
   </script>
  

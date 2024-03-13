@@ -14,7 +14,6 @@ const transporter = nodemailer.createTransport({
 
 router.post("/mailsend", async (req, res) => {
   const { name, email, subject, message } = req.body;
-
   const messageHtml = message.replace(/\n/g, "<br>");
 
   const output = `
@@ -38,7 +37,11 @@ router.post("/mailsend", async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    res.redirect("/contact?msg=Email+has+been+sent");
+    console.log("Email has been sent");
+    res.json({
+      status: 200,
+      message: "Email has been sent",
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send("Error sending email");

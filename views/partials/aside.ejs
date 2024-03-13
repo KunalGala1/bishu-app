@@ -1,14 +1,16 @@
 <%
 const asideLinks = [
-//   {name: "events", fa: "calendar-days"}, 
-  {name: "about", fa: "book"},
-  {name: "videos", fa: "video"},
-  {name: "video_page", fa: "", title: "page content"},
-  {name: 'tracks', fa: 'music', title: 'music tracks'},
-  {name: 'music_page', fa: '', title: 'page content'},
-  {name: 'blogposts', fa: 'newspaper', title: 'blog posts'},
-  {name: 'blog_page', fa: '', title: 'page content'},
-  {name: 'contact', fa: 'envelope', title: 'contact page'},
+//   {name: "events", fa: "calendar-days"},
+	{name: 'nav', fa: 'compass'},
+	{name: "home", fa: "house"},
+	{name: "about", fa: "book"},
+	{name: "videos", fa: "video"},
+	{name: "video_page", fa: "", title: "page content"},
+	{name: 'tracks', fa: 'music', title: 'music tracks'},
+	{name: 'music_page', fa: '', title: 'page content'},
+	{name: 'blogposts', fa: 'newspaper', title: 'blog posts'},
+	{name: 'blog_page', fa: '', title: 'page content'},
+	{name: 'contact', fa: 'envelope', title: 'contact page'},
 ];
 
 const generateAside = (links) => {
@@ -35,8 +37,8 @@ const generateAside = (links) => {
 		<ul>
 			<li>
 				<a href="/" class="link aside-link">
-					<i class="fa-solid fa-house"></i>
-					<span>home</span>
+					<i class="fa-solid fa-right-to-bracket"></i>
+					<span>Exit</span>
 				</a>
 			</li>
 			<li>

@@ -1,6 +1,6 @@
 <% 
 const aboutParsedBody = JSON.parse(data.about.body);
-let music_track, video_track, blog_post;
+
 
 if (data.Track && data.Track.length > 0) {
     music_track = JSON.parse(data.Track[0].body);
@@ -10,8 +10,10 @@ if (data.Video && data.Video.length > 0) {
     video_track = JSON.parse(data.Video[0].body);
 }
 
+const music_track = JSON.parse(data.featuredTrack.body);
+const video_track = JSON.parse(data.featuredVideo.body);
+
 const contactParsedBody = JSON.parse(data.contact.body);
-console.log("🚀 ~ contactParsedBody:", contactParsedBody);
 const contactDescription = contactParsedBody.description;
 %>
 
