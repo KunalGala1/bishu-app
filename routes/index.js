@@ -25,11 +25,7 @@ const pages = [
     name: "index",
     data: {
       docs: ["about", "contact"],
-      lists: [
-        "Track",
-        "Video",
-        // "Blogpost"
-      ],
+      lists: ["Track", "Video"],
     },
   },
   { path: "about", data: { docs: ["about"] } },

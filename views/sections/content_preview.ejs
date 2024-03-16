@@ -1,9 +1,13 @@
 <%
+const navParsedBody = JSON.parse(data.nav.body);
+const aboutTitle = navParsedBody.about;
+const musicTitle = navParsedBody.music;
+const videosTitle = navParsedBody.videos;
+
 const arr = [
-    {title: 'about', data: aboutParsedBody},
-    {title: 'music', data: music_track}, 
-    {title: 'videos', data: video_track}, 
-    // {title: 'blog', data: blog_post}
+    {title: aboutTitle, data: aboutParsedBody, href: '/about'},
+    {title: musicTitle, data: music_track, href: '/music'}, 
+    {title: videosTitle, data: video_track, href: '/videos'},
 ]
 %>
 
@@ -12,7 +16,7 @@ const arr = [
         <% if (arr[i].data) { %>
             <% const content = arr[i] %>
             <section class="p-4 space-y-8">                
-                <a href="/<%= content.title %>" class="block w-max"><h2 class="text-gold bg-red-800 uppercase py-2 px-4 text-lg font-serif rounded"><%= content.title %></h2></a>
+                <a href="<%= content.href %>" class="block w-max"><h2 class="text-gold bg-red-800 uppercase py-2 px-4 text-lg font-serif rounded"><%= content.title %></h2></a>
                 <div>
                     <% if (content.title === 'about') { %>
                         <%
@@ -26,22 +30,11 @@ const arr = [
                         <div>
                             <img src="<%= image %>" alt="<%= image_alt %>">
                         </div>
-                    <% } else if (content.title === 'music') { %>
+                    <% } else if (content.title === musicTitle) { %>
                         <%- content.data.track %>
-                    <% } else if (content.title === 'videos') { %>
+                    <% } else if (content.title === videosTitle) { %>
                         <%- content.data.video %>
-                    <% } else if (content.title === 'blog') { %>
-                        <% 
-                        // Date Formatting
-                        const date = new Date(blog_post_metadata.date);
-                        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                        const formattedDate = date.toLocaleDateString('en-US', options);
-                        %>
-                        <a href="/blog/<%= content.data.slug %>"><img src="<%= content.data.file.location %>" alt="<%= content.data.file.alt %>" class="rounded"></a>
-                        <h3 class="text-white text-lg pt-1"><a href="/blog/<%= content.data.slug %>"><%= content.data.title %></a></h3>
-                        <p class="text-white/50 text-sm"><%= formattedDate %></p>
-                        <div class="text-white/50"><%- content.data.description %></div>
-                    <% } %>
+                    <% } %>                        
                 </div>
             </section>
         <% } %>
