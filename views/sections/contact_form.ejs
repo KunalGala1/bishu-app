@@ -1,96 +1,29 @@
-<script src="https://www.google.com/recaptcha/api.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
 
+<!-- Contact form -->
 <form id="contact-form" action="/mailsend" method="post" class="text-gray-200 space-y-4 sm:w-3/5 mx-auto max-w-full">
     <div class="flex flex-col">
       <label for="name">Name*</label>
-      <input type="text" name="name" class="rounded p-2 bg-gray-200 text-black" required>
+      <input type="text" name="name" class="rounded p-2 bg-gray-200 text-black">
     </div>
     <div class="flex flex-col">
       <label for="email">Email*</label>
-      <input type="text" name="email" class="rounded p-2 bg-gray-200 text-black" required>
+      <input type="text" name="email" class="rounded p-2 bg-gray-200 text-black">
     </div>
     <div class="flex flex-col">
       <label for="subject">Subject*</label>
-      <input type="text" name="subject" class="rounded p-2 bg-gray-200 text-black" required>
+      <input type="text" name="subject" class="rounded p-2 bg-gray-200 text-black">
     </div>
     <div class="flex flex-col">
       <label for="message">Message</label>
       <textarea name="message" id="" cols="30" rows="10" class="rounded p-2 bg-gray-200 text-black"></textarea>
     </div>
-    <div class="flex flex-col w-max">
-      <button type="submit" class="g-recaptcha" 
-        data-sitekey="6LdcM5QpAAAAAHvFrVNJC2odrhl61hqFKwNwgsSV" 
-        data-callback='onSubmit' 
-        data-action='submit'>Send <i class="fa-solid fa-paper-plane"></i></button>
 
+    <!-- Cloudflare turnstile -->
+    <!-- <div class="cf-turnstile" data-sitekey="0x4AAAAAAAbiMKHW7ITGnCR1" data-callback="javascriptCallback"></div> -->
+
+    <!-- Submit button -->
+    <div class="flex flex-col w-max">
+      <button type="submit">Send <i class="fa-solid fa-paper-plane"></i></button>
     </div>
   </form>
-
-  <script>
-    async function onSubmit(token) {
-      const form = document.getElementById("contact-form");
-
-      const formData = new FormData(form);
-      let formObject = {};
-
-      for (let [key, value] of formData.entries()) {
-        formObject[key] = value;
-      }
-
-      const { name, email, subject } = formObject;
-
-      // Regular expression for email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!name || !email || !subject) {
-        toastNotification("All required fields must be filled out",
-          "danger",
-          5000
-        );
-        return false;
-      } else if (!emailRegex.test(email)) {
-        toastNotification("Please enter a valid email address",
-          "danger",
-          5000
-        );
-        return false;
-      } 
-
-      // If everything is filled out, send the POST request
-      try {
-        console.log(formObject);
-        const response = await fetch("/mailsend", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formObject),
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        toastNotification(data.message, "success", 5000);
-        form.reset();
-      } catch (error) {
-        console.error("There was a problem with the fetch operation:", error);
-        toastNotification(`Error: ${error.message}`, "danger", 5000);
-      }
-    }
-
-    const toastNotification = (message, type, duration = 1000) => {
-      const toastNotification = document.createElement("div");
-      toastNotification.classList.add("toast-notification", "active", type);
-      toastNotification.textContent = message;
-      document.body.appendChild(toastNotification);
-      setTimeout(() => {
-        toastNotification.classList.remove("active");
-        setTimeout(() => {
-          toastNotification.remove();
-        }, 250);
-      }, duration);
-    };
-  </script>
- 

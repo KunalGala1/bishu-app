@@ -1,8 +1,19 @@
-import { toastNotification } from "./utils.js";
+// import { toastNotification } from "./utils.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  const contactForm = document.getElementById("contact-form");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault;
+
+      console.log("default prevented");
+    });
+  }
+
+  return;
+
   const forms = document.querySelectorAll(".contact-form");
-  const lang = document.documentElement.lang;
 
   forms.forEach((form) => {
     form.addEventListener("submit", async (e) => {
