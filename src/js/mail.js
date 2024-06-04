@@ -9,6 +9,21 @@ document.addEventListener("DOMContentLoaded", () => {
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
+      const contactFormData = new FormData(event.target);
+
+      // Hit siteverify endpoint to consume turnstile token and check validity
+      const response = await fetch("/verify-turnstile-token", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(contactFormData),
+      });
+      const result = await response.json();
+      console.log("🚀 ~ contactForm.addEventListener ~ result:", result);
+
+      return;
+
       // Validation
       const formData = new FormData(contactForm);
       let formObject = {};

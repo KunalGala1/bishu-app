@@ -15,6 +15,21 @@ const transporter = nodemailer.createTransport({
   }),
 });
 
+const CLOUDFLARE_TURNSTILE_SECRET_KEY =
+  process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY;
+
+router.post("/verify-turnstile-token", async (req, res) => {
+  console.log(req);
+  const body = await req.body;
+  console.log("🚀 ~ router.get ~ body:", body);
+
+  //   Todo - figure out where formdata went, and why req.body is empty
+
+  res.json({
+    status: 200,
+  });
+});
+
 router.post("/mailsend", turnstileValidation.handlePost, async (req, res) => {
   const { name, email, subject, message } = req.body;
   const messageHtml = message.replace(/\n/g, "<br>");
