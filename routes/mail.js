@@ -38,18 +38,23 @@ router.post("/verify-turnstile-token", upload.none(), async (req, res) => {
 
   const outcome = await result.json();
   if (outcome.success) {
-    console.log("verified successfully");
+    // Send email...
+    const { name, email, subject, message } = req.body;
+    const emailResponse = await sendEmail(name, email, subject, message);
+    if (!emailResponse) {
+      res.status(500).json({ message: "Error sending email" });
+    } else {
+      res.status(200).json({ message: "Email successfully sent" });
+    }
+  } else {
+    res.status(500).json({ message: "Internal Server Error" });
   }
-
-  res.json({
-    status: 200,
-  });
 });
 
-router.post("/mailsend", turnstileValidation.handlePost, async (req, res) => {
-  const { name, email, subject, message } = req.body;
-  const messageHtml = message.replace(/\n/g, "<br>");
+const sendEmail = async (name, email, subject, message) => {
+  const messageHtml = message.replace(/\n/g, "<br>"); // replace line breaks with <br>
 
+  // Email markup
   const output = `
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="https://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -502,7 +507,7 @@ router.post("/mailsend", turnstileValidation.handlePost, async (req, res) => {
     </body>
   
     </html>  
-`;
+    `;
 
   const mailOptions = {
     from: "BcJazz.net Contact Form <k2awesomeness@gmail.com>",
@@ -515,15 +520,10 @@ router.post("/mailsend", turnstileValidation.handlePost, async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log("Email has been sent");
-    res.json({
-      status: 200,
-      message: "Email has been sent",
-    });
+    return true;
   } catch (error) {
-    console.log(error);
-    res.status(500).send("Error sending email");
+    return false;
   }
-});
+};
 
 module.exports = router;

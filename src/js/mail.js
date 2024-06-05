@@ -8,10 +8,39 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault();
 
       const contactFormData = new FormData(event.target);
-      console.log(
-        "🚀 ~ contactForm.addEventListener ~ contactFormData:",
-        contactFormData
+
+      // Form Validation
+      let contactFormObject = {}; // convert to object
+      for (let [key, value] of contactFormData.entries()) {
+        contactFormObject[key] = value;
+      }
+
+      // Check if any field is empty
+      const { name, email, subject } = contactFormObject;
+      if (!name || !email || !subject) {
+        toastNotification("Please fill in all fields", "danger", 5000);
+        return;
+      }
+
+      // Check validity of email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Regular expression for email validation
+      if (!emailRegex.test(email)) {
+        toastNotification("Please enter a valid email address", "danger", 5000);
+        return;
+      }
+
+      // Check if Cloudflare turnstile was completed
+      const cfTurnstileResponse = document.getElementsByClassName(
+        "cf-turnstile-response"
       );
+      if (!cfTurnstileResponse) {
+        toastNotification(
+          "Please complete the Cloudflare verification",
+          "danger",
+          5000
+        );
+        return;
+      }
 
       // Hit siteverify endpoint to consume turnstile token and check validity
       const response = await fetch("/verify-turnstile-token", {
@@ -19,114 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
         body: contactFormData,
       });
       const result = await response.json();
-      console.log("🚀 ~ contactForm.addEventListener ~ result:", result);
-      return;
-
-      // Validation
-      const formData = new FormData(contactForm);
-      let formObject = {};
-
-      for (let [key, value] of formData.entries()) {
-        formObject[key] = value;
-      }
-
-      const { name, email, subject } = formObject;
-
-      // Regular expression for email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      if (!name || !email || !subject) {
+      if (!response.ok) {
         toastNotification(
-          "All required fields must be filled out",
-          "danger",
+          "There was an error sending your email. Please try again later.",
+          "error",
           5000
         );
-        return false;
-      } else if (!emailRegex.test(email)) {
-        toastNotification("Please enter a valid email address", "danger", 5000);
-        return false;
-      } else if (auth.toLowerCase() !== "3" && auth.toLowerCase() !== "three") {
-        toastNotification(
-          "Security question was answered incorrectly",
-          "danger",
-          5000
-        );
-        return false;
+      } else {
+        toastNotification("Your email was sucessfully sent!", "success", 5000);
+        contactForm.reset();
       }
     });
   }
 });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   return;
-//   const contactForm = document.getElementById("contact-form");
-//   if (contactForm) {
-//     contactForm.addEventListener("submit", async (event) => {
-//       event.preventDefault();
-
-//       // Cloudflare turnstile
-//     });
-//   }
-
-//   const forms = document.querySelectorAll(".contact-form");
-
-//   forms.forEach((form) => {
-//     form.addEventListener("submit", async (e) => {
-//       // Made the event handler async
-//       e.preventDefault();
-
-//       const formData = new FormData(form);
-//       let formObject = {};
-
-//       for (let [key, value] of formData.entries()) {
-//         formObject[key] = value;
-//       }
-
-//       const { name, email, subject } = formObject;
-
-//       // Regular expression for email validation
-//       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-//       if (!name || !email || !subject) {
-//         toastNotification(
-//           "All required fields must be filled out",
-//           "danger",
-//           5000
-//         );
-//         return false;
-//       } else if (!emailRegex.test(email)) {
-//         toastNotification("Please enter a valid email address", "danger", 5000);
-//         return false;
-//       } else if (auth.toLowerCase() !== "3" && auth.toLowerCase() !== "three") {
-//         toastNotification(
-//           "Security question was answered incorrectly",
-//           "danger",
-//           5000
-//         );
-//         return false;
-//       }
-
-//       // If everything is filled out, send the POST request
-//       try {
-//         const response = await fetch("/mailsend", {
-//           method: "POST",
-//           headers: {
-//             "Content-Type": "application/json",
-//           },
-//           body: JSON.stringify(formObject),
-//         });
-
-//         if (!response.ok) {
-//           throw new Error(`HTTP error! status: ${response.status}`);
-//         }
-
-//         const data = await response.json();
-//         toastNotification(data.msg, "success", 5000);
-//         form.reset();
-//       } catch (error) {
-//         console.error("There was a problem with the fetch operation:", error);
-//         toastNotification(`Error: ${error.message}`, "danger", 5000);
-//       }
-//     });
-//   });
-// });
