@@ -511,8 +511,8 @@ const sendEmail = async (name, email, subject, message) => {
 
   const mailOptions = {
     from: "BcJazz.net Contact Form <k2awesomeness@gmail.com>",
-    // to: ["k2awesomeness@gmail.com, bishuhere@yahoo.com"],
-    to: ["k2awesomeness@gmail.com"],
+    to: ["k2awesomeness@gmail.com, bishuhere@yahoo.com"],
+    // to: ["k2awesomeness@gmail.com"],
     replyTo: email,
     subject: "New Contact Request from " + name,
     html: output,
