@@ -3,6 +3,10 @@ const router = express.Router();
 const nodemailer = require("nodemailer");
 const AWS = require("aws-sdk");
 
+// multer middleware
+const multer = require("multer");
+const upload = multer();
+
 // Middleware
 const turnstileValidation = require("../middleware/turnstileValidation");
 
@@ -18,12 +22,24 @@ const transporter = nodemailer.createTransport({
 const CLOUDFLARE_TURNSTILE_SECRET_KEY =
   process.env.CLOUDFLARE_TURNSTILE_SECRET_KEY;
 
-router.post("/verify-turnstile-token", async (req, res) => {
-  console.log(req);
-  const body = await req.body;
-  console.log("🚀 ~ router.get ~ body:", body);
+router.post("/verify-turnstile-token", upload.none(), async (req, res) => {
+  const body = req.body;
+  const token = body["cf-turnstile-response"];
 
-  //   Todo - figure out where formdata went, and why req.body is empty
+  let formData = new FormData();
+  formData.append("secret", CLOUDFLARE_TURNSTILE_SECRET_KEY);
+  formData.append("response", token);
+
+  const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+  const result = await fetch(url, {
+    body: formData,
+    method: "POST",
+  });
+
+  const outcome = await result.json();
+  if (outcome.success) {
+    console.log("verified successfully");
+  }
 
   res.json({
     status: 200,

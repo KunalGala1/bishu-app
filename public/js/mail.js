@@ -3,25 +3,23 @@ import { toastNotification } from "./utils.js";
 // Temporary - to stop form from sending
 document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contact-form");
-  console.log("🚀 ~ document.addEventListener ~ contactForm:", contactForm);
-
   if (contactForm) {
     contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const contactFormData = new FormData(event.target);
+      console.log(
+        "🚀 ~ contactForm.addEventListener ~ contactFormData:",
+        contactFormData
+      );
 
       // Hit siteverify endpoint to consume turnstile token and check validity
       const response = await fetch("/verify-turnstile-token", {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(contactFormData),
+        method: "POST",
+        body: contactFormData,
       });
       const result = await response.json();
       console.log("🚀 ~ contactForm.addEventListener ~ result:", result);
-
       return;
 
       // Validation
@@ -62,8 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // document.addEventListener("DOMContentLoaded", () => {
 //   return;
 //   const contactForm = document.getElementById("contact-form");
-//   console.log("🚀 ~ document.addEventListener ~ contactForm:", contactForm);
-
 //   if (contactForm) {
 //     contactForm.addEventListener("submit", async (event) => {
 //       event.preventDefault();
